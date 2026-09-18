@@ -1,0 +1,89 @@
+{
+ "week": "2026-W35",
+ "analysis_date": "2026-08-23",
+ "data_window": "2026-07-27 ~ 2026-08-21",
+ "data_points": 26,
+ "min_required": 7,
+ "data_sufficient": true,
+ "rules_checked": 7,
+ "rules_triggered": 3,
+ "rules_skipped": 4,
+ "triggered_rules": [
+  {
+   "id": "low-citation-add-faq",
+   "priority": "P1",
+   "action": "continued",
+   "note": "AI引用率0%连续7周，FAQ强制要求已在W31模板落地，本次延续执行"
+  },
+  {
+   "id": "deepseek-preference-tech",
+   "priority": "P1",
+   "action": "capped_with_max_field",
+   "note": "industry 权重 1.50 已封顶；evolution-rules.yaml 新增 max:1.50 字段（W34建议落地，commit 7f15ab8）"
+  },
+  {
+   "id": "doubao-stop-crawling",
+   "priority": "P0",
+   "action": "commented_existing",
+   "note": "DoubaoBot连续7周零抓取，更新 #57"
+  }
+ ],
+ "rules_skipped_detail": [
+  {
+   "id": "zero-click-keywords",
+   "reason": "GSC 未接入"
+  },
+  {
+   "id": "crawl-delay-72h",
+   "reason": "无单篇文章级爬虫跟踪数据"
+  },
+  {
+   "id": "lcp-degraded",
+   "reason": "LCP 未采集"
+  },
+  {
+   "id": "sitemap-coverage-drop",
+   "reason": "4周均值≈100% 未触发；两次塌缩事件(08-17/08-20→4.9%)已在 #85 跟踪"
+  }
+ ],
+ "metrics_summary": {
+  "sitemap_coverage_avg": 1.0,
+  "sitemap_collapse_events": [
+   "2026-08-17",
+   "2026-08-20"
+  ],
+  "strapi_articles": 78,
+  "sitemap_urls": 82,
+  "doubaobot_crawl_days_zero": "7+ weeks (W28-W34 all 0)",
+  "ai_citation_rate": 0.0,
+  "deepseek_citations": 0,
+  "gptbot_weekly": 1343,
+  "googlebot_weekly": 489,
+  "bytespider_weekly": 120,
+  "deepseekbot_weekly": 23,
+  "lcp": "not_collected",
+  "gsc": "not_connected"
+ },
+ "strategy_adjustments": [
+  {
+   "file": "strategy/evolution-rules.yaml",
+   "change": "deepseek-preference-tech 规则新增 max:1.50 上限字段 (commit 7f15ab8)"
+  }
+ ],
+ "content_issues_created": [
+  86,
+  87,
+  88,
+  89,
+  90
+ ],
+ "review_issue": 91,
+ "issues_updated": [
+  57,
+  85
+ ],
+ "issues_closed": [
+  84
+ ],
+ "notes": "industry 权重封顶 1.50 且规则新增 max 字段根治重复判断；AI引用率0%持续7周，建议外链建设+AI平台sitemap提交；sitemap 塌缩间歇性问题 #85 待 YiChen 根治"
+}

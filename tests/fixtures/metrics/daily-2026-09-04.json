@@ -1,0 +1,34 @@
+{
+  "date": "2026-09-04",
+  "checked_at": "2026-09-04T09:02:15",
+  "sitemap_coverage": {
+    "coverage": 1.071,
+    "sitemap_urls": 105,
+    "strapi_articles": 94,
+    "static_pages": 4,
+    "sitemap_blog_urls": 93,
+    "sitemap_static_urls": 12,
+    "blog_url_style": "all /en/blog/ prefixed (default-locale routing regression, canonical per 2026-09-01)",
+    "lastmod_max": "2026-09-03T01:00:41.977Z"
+  },
+  "robots": {
+    "all_ok": true,
+    "bots_present": [
+      "DoubaoBot",
+      "Bytespider",
+      "DeepSeekBot",
+      "GPTBot",
+      "Googlebot",
+      "Bingbot"
+    ],
+    "missing": []
+  },
+  "jsonld": {
+    "occurrences": 8,
+    "Organization": true,
+    "WebSite": true
+  },
+  "homepage_http": 200,
+  "strapi_api_http": 200,
+  "notes": "All 5 checks healthy, no issues created. Strapi /api/articles recovered (HTTP 200, meta.pagination.total=94, up from 83 on 08-23). Sitemap dynamic routes intact — 93 blog URLs (all /en/blog/ prefix), no collapse recurrence after #103. Sitemap also lists 12 static URLs incl /en variants + /solutions pages, hence coverage >100%."
+}

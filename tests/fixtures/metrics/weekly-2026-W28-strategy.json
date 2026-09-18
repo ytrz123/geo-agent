@@ -1,0 +1,30 @@
+{
+  "week": "2026-W28",
+  "analysis_date": "2026-07-12",
+  "data_points": 2,
+  "min_required": 7,
+  "data_sufficient": false,
+  "rules_checked": 7,
+  "rules_triggered": 0,
+  "rules_pending": [
+    {
+      "id": "low-citation-add-faq",
+      "metric": "ai_citation_rate",
+      "value": 0.0,
+      "threshold": 0.2,
+      "status": "would_trigger_with_more_data"
+    }
+  ],
+  "metrics_summary": {
+    "sitemap_coverage_avg": 1.0,
+    "doubaobot_crawl_days_zero": 1,
+    "ai_citation_rate": 0.0,
+    "lcp": "not_collected",
+    "gsc": "not_connected"
+  },
+  "issues_created": [
+    15
+  ],
+  "strategy_adjustments": [],
+  "content_issues_created": []
+}

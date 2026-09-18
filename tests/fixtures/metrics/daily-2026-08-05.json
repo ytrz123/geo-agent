@@ -1,0 +1,41 @@
+{
+  "date": "2026-08-05",
+  "checks": {
+    "sitemap_coverage": {
+      "sitemap_urls": 70,
+      "strapi_articles": 66,
+      "coverage": 1.0,
+      "status": "pass"
+    },
+    "robots_txt": {
+      "bots": [
+        "DoubaoBot",
+        "Bytespider",
+        "DeepSeekBot",
+        "GPTBot",
+        "Googlebot",
+        "Bingbot"
+      ],
+      "all_allowed": true,
+      "status": "pass"
+    },
+    "jsonld": {
+      "schemas": [
+        "Organization",
+        "WebSite"
+      ],
+      "all_present": true,
+      "status": "pass"
+    },
+    "http_status": {
+      "code": 200,
+      "status": "pass"
+    },
+    "strapi_api": {
+      "code": 200,
+      "total_articles": 66,
+      "status": "pass"
+    }
+  },
+  "summary": "all_pass"
+}

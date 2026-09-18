@@ -1,0 +1,32 @@
+{
+  "date": "2026-08-28",
+  "checks": {
+    "sitemap_coverage": {
+      "coverage": 1.0,
+      "sitemap_urls": 92,
+      "strapi_articles": 88,
+      "static_pages": 4,
+      "note": "santiy-ai.com rebrand domain; dynamic routes intact"
+    },
+    "robots": {
+      "all_bots_ok": true,
+      "bots": [
+        "DoubaoBot",
+        "Bytespider",
+        "DeepSeekBot",
+        "GPTBot",
+        "Googlebot",
+        "Bingbot"
+      ]
+    },
+    "jsonld": {
+      "count": 2,
+      "organization": true,
+      "website": true
+    },
+    "homepage_http": 200,
+    "strapi_http": 200
+  },
+  "anomalies": [],
+  "notes": "all 5 checks pass; coverage 92/(88+4)=100%; data gap: daily-2026-08-22.json & daily-2026-08-27.json missing in remote metrics/ (cron did not push those days)"
+}

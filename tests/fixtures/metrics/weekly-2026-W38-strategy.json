@@ -1,0 +1,190 @@
+{
+  "week": "2026-W38",
+  "analysis_date": "2026-09-13",
+  "data_window": "2026-08-16 ~ 2026-09-12",
+  "data_points": 24,
+  "min_required": 7,
+  "data_sufficient": true,
+  "data_gaps": [
+    "2026-08-22 (cron未推送)",
+    "2026-08-27 (cron未推送)",
+    "2026-09-05 (cron未运行, 周末空档)",
+    "2026-09-06 (cron未运行, 周末空档 — W37策略分析同空档未执行)"
+  ],
+  "note_prior_gap": "W37 策略分析 (2026-09-06) 因 cron 空档未执行；本期 W38 覆盖扩展4周窗口 (08-16~09-12)",
+  "rules_checked": 7,
+  "rules_triggered": 3,
+  "rules_skipped": 4,
+  "triggered_rules": [
+    {
+      "id": "low-citation-add-faq",
+      "priority": "P1",
+      "action": "continued",
+      "note": "AI引用率0%连续9周(W32-W34实测0%, W35-W37检测工具cookie失效不可判定 #92)，FAQ强制要求已在W31模板落地并持续验证，延续执行"
+    },
+    {
+      "id": "deepseek-preference-tech",
+      "priority": "P1",
+      "action": "capped_with_max_field",
+      "note": "DeepSeek月引用0<2，连续第6次触发；industry权重已达max:1.50封顶(W35新增max字段生效)，本次不调整"
+    },
+    {
+      "id": "doubao-stop-crawling",
+      "priority": "P0",
+      "action": "commented_existing",
+      "note": "DoubaoBot连续零抓取(W34/W35全量确认0; W36/W37爬虫日志因SSH认证失败#104不可采集)，更新#57，不新建工单"
+    }
+  ],
+  "rules_skipped_detail": [
+    {
+      "id": "zero-click-keywords",
+      "reason": "GSC 未接入"
+    },
+    {
+      "id": "crawl-delay-72h",
+      "reason": "无单篇文章级爬虫跟踪数据"
+    },
+    {
+      "id": "lcp-degraded",
+      "reason": "LCP 未采集"
+    },
+    {
+      "id": "sitemap-coverage-drop",
+      "reason": "4周均值92.6%≥90%未触发；塌缩事件(08-30/08-31/09-01 3天)已跟踪#103并关闭，09-02恢复后连续11个自然日无复发"
+    }
+  ],
+  "metrics_summary": {
+    "sitemap_coverage_avg": 0.926,
+    "sitemap_coverage_avg_note": "17个可用日(排除null日)；>1.0为i18n静态页新增(/en变体)导致的+4分母伪影，实际覆盖率100%",
+    "sitemap_collapse_events": [
+      "2026-08-17 (82->4, 4.9%)",
+      "2026-08-20 (82->4, 4.9%)",
+      "2026-08-30~09-01 (92->4, 连续3天, 期间Strapi 500 #95)"
+    ],
+    "last_collapse_date": "2026-09-01",
+    "stable_days_since_last_collapse": 11,
+    "sitemap_urls_latest": 106,
+    "strapi_articles_latest": 94,
+    "doubaobot_crawl_days_zero": "10+ weeks (W28-W35 all 0; W36/W37 不可采集#104)",
+    "ai_citation_rate": 0.0,
+    "ai_citation_note": "W34实测0.0%; W35/W36/W37连续3周Doubao sessionid cookie过期不可判定(#92)",
+    "deepseek_citations": 0,
+    "crawler_weekly_trend": {
+      "W34": {
+        "doubaobot": 0,
+        "bytespider": 120,
+        "gptbot": 1343,
+        "googlebot": 489,
+        "deepseekbot": 23
+      },
+      "W35": {
+        "doubaobot": 0,
+        "bytespider": 678,
+        "gptbot": 1365,
+        "googlebot": 610,
+        "deepseekbot": 23
+      },
+      "W36": {
+        "status": "unavailable",
+        "reason": "SSH认证失败 #104"
+      },
+      "W37": {
+        "status": "unavailable",
+        "reason": "SSH认证失败 #104"
+      }
+    },
+    "lcp": "not_collected",
+    "gsc": "not_connected"
+  },
+  "new_anomalies": [
+    {
+      "id": "blog-route-regression",
+      "issue": 106,
+      "priority": "P1",
+      "finding": "博客详情页默认语言路由回归 /blog/{slug} 404 仅 /en/blog/{slug} 200 (09-01实测)",
+      "action": "YiChen 排查中 (#106)"
+    },
+    {
+      "id": "ssh-crawler-blocked",
+      "issue": 104,
+      "priority": "P1",
+      "finding": "生产服务器SSH密码认证连续3周失败，爬虫日志无法采集",
+      "action": "需 liujia 提供新密码/公钥 (#104)"
+    },
+    {
+      "id": "doubao-cookie-expired",
+      "issue": 92,
+      "priority": "P0",
+      "finding": "Doubao sessionid cookie 连续3周过期，GEO引用检测不可判定",
+      "action": "需人工刷新 cookie (#92)"
+    }
+  ],
+  "strategy_adjustments": [],
+  "strategy_adjustments_note": "零文件变更: industry权重1.50封顶维持(max字段W35已落地)，FAQ模板延续执行，keywords.yaml与evolution-rules.yaml本周无修改",
+  "content_issues_created": [
+    109,
+    110,
+    111,
+    112,
+    113,
+    114
+  ],
+  "content_batch_detail": [
+    {
+      "issue": 109,
+      "category": "industry",
+      "assignee": "YiChen",
+      "slug": "llm-private-deployment-xinchuang-20260913"
+    },
+    {
+      "issue": 110,
+      "category": "company",
+      "assignee": "Ruoxi",
+      "slug": "santi-ai-enterprise-agent-20260913"
+    },
+    {
+      "issue": 111,
+      "category": "government-ai",
+      "assignee": "ShuHan",
+      "slug": "smart-police-data-governance-20260913"
+    },
+    {
+      "issue": 112,
+      "category": "network-tech",
+      "assignee": "YiChen",
+      "slug": "esp32-iot-gateway-dev-20260913"
+    },
+    {
+      "issue": 113,
+      "category": "forestry",
+      "assignee": "Ruoxi",
+      "slug": "forest-chief-system-digital-20260913"
+    },
+    {
+      "issue": 114,
+      "category": "product",
+      "assignee": "Ruoxi",
+      "slug": "clawrecorder-meeting-minutes-20260913",
+      "angle": 2,
+      "angle_name": "会议纪要场景"
+    }
+  ],
+  "batch_composition_note": "2026-09-03起批次构成6篇=5品类各1+产品篇1；产品篇角度2(会议纪要场景)，角度1产品总览clawrecorder-ai-workflow-20260903已手动发布",
+  "batch_guard": "上批次#97-#101全部closed(09-02~04发布)，满足新建守卫；无open article-generate工单",
+  "review_issue": 115,
+  "issues_updated": [
+    57
+  ],
+  "issues_closed": [
+    102
+  ],
+  "issues_still_open_external": [
+    92,
+    104,
+    106,
+    50,
+    52,
+    64
+  ],
+  "notes": "① sitemap塌缩#103已关闭(11天无复发)，复发由sitemap-coverage-drop规则+每日检查自动新建；② #95(Strapi 500)已关闭恢复；③ 引用检测cookie(#92)+SSH爬虫日志(#104)连续3周受阻，GEO检测实质降级运行，为当前最高优先级待办；④ #106博客路由回归需YiChen跟进；⑤ product篇首进批次(角度2)"
+}

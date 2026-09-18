@@ -1,0 +1,173 @@
+[
+  {
+    "number": 115,
+    "title": "[strategy-review] 策略分析周报 2026-09-13 (W38) — 引用率0%九周 + GEO检测降级运行 + 6篇批次",
+    "labels": [
+      "strategy-review"
+    ],
+    "assignees": [
+      "liujia"
+    ],
+    "state": "open",
+    "updated_at": "2026-09-13T08:06:15+08:00",
+    "body_head": "## 策略分析周报 2026-09-13 (W38)\n\n> 上一期 W36 (2026-08-30)；W37 (2026-09-06) 因 cron 空档未执行（daily-2026-09-05/06 亦缺失），本期覆盖扩展 4 周窗口。\n\n### 指标趋势\n\n- **sitemap 覆盖率均值**: 92.6%（17 个可用日；>100% 为 i18n 静态页新增导致的 +4 分母伪影，实际 100%）\n- **塌缩事件**: 08-17、08-20、08-30~09-01（连续 3 天）共 3 次；09-02 恢复后连续 11 个自然日无复发（#103 已关闭）\n- **DoubaoBot 日抓取**: 0（W34/W35 全量确认；W36/W37 SSH 受阻 #104 不可采集，≥10 周零抓取）\n- **AI 引用率**: 0%（W34 实测；W35/W36/W37 连续 3 周"
+  },
+  {
+    "number": 108,
+    "title": "FDE 社区渗透与生态收录（fde4.ai/GitHub/LINUX DO/即刻/漕泾）",
+    "labels": [],
+    "assignees": [],
+    "state": "open",
+    "updated_at": "2026-09-10T11:46:08+08:00",
+    "body_head": "> 自 stkj/aiRecoderProduct#40 迁移至 geo-seo 仓库。\n\n## 已完成\n\n- [x] FDE 观点文 8 平台分发（详见 #39）\n- [x] 渠道验证：fde4.ai = 范冰开源手册站（GitHub 4k+ Star，含案例/名录/生态地图，¥299 课程+社群即将开售）\n- [x] 渠道验证：漕泾社区 = 原乡映客 OPC × 金山区数据局（DNC 村 286 数字游民，dnc.shuziyoumin.top）\n- [x] 渠道验证：Discord FDE HUB = 小服降级（实测加入仅 25 人可见/榜单 41 成员/0 upvote，不值得投内容；留在服潜水，出海线启动时再激活）\n- [x] 源码边界确认：开源 SKILL.md + demo + 文档；CLI 仓库不公开；后端/转写链路永不开源；提交前跑密钥审计\n\n## 第一梯队（本周）\n\n-"
+  },
+  {
+    "number": 107,
+    "title": "FDE 观点文《豆包FDE招聘暴增21倍》多平台分发（2026-08-31）",
+    "labels": [],
+    "assignees": [],
+    "state": "open",
+    "updated_at": "2026-09-02T11:04:52+08:00",
+    "body_head": "> 自 stkj/aiRecoderProduct#39 迁移至 geo-seo 仓库。\n\n## 分发总结（2026-08-31）\n\n内容：《豆包 FDE 招聘暴增 21 倍之后：FDE 的下一个标配工具是什么》观点文 + 6 张图文卡（1080×1920）+ 39.5s 竖版轮播视频。\n\n| 平台 | 体裁 | 状态 | 链接/备注 |\n|---|---|---|---|\n| 知乎机构号 | 图文+6图 | ✅ 已发布 | zhuanlan.zhihu.com/p/2078150893837488158 |\n| CSDN | 图文+6图 | ✅ 已发布（审核中） | 文章 ID 164263230 |\n| 掘金 | 图文+6图 | ✅ 已发布 | 分类人工智能+标签 |\n| 头条号 | 图文+6图 | ✅ 已发布 | 全自动（预览并发布→确认发布） |\n| 百家号 | 图文 | ✅ 已发"
+  },
+  {
+    "number": 106,
+    "title": "[seo-monitor] 博客详情页默认语言路由回归 — /blog/{slug} 404，仅 /en/blog/{slug} 200",
+    "labels": [
+      "seo-monitor"
+    ],
+    "assignees": [
+      "YiChen"
+    ],
+    "state": "open",
+    "updated_at": "2026-09-18T09:01:52+08:00",
+    "body_head": "## 现象\n\n- 全站博客详情页默认语言路由失效：`/blog/{slug}` → 404（旧文章 ai-agent-private-deploy-20260823 同样 404）\n- 带 locale 前缀正常：`/en/blog/{slug}` → 200\n- 2026-08-25 发布批次验证时 `/blog/{slug}` 还是 200，回归发生在 08-25 之后（疑似 rebrand/重建引入 locale 路由配置问题）\n\n## 影响\n\n- 已被 GEO 收录的旧 URL（无 /en 前缀）全部 404，AI 引擎引用指向死链\n- sitemap 塌缩（#103）期间爬虫只能拿到 4 个静态 URL；即使 sitemap 恢复，若 sitemap 里是无前缀 URL 而页面 404，覆盖率验证会再次异常\n\n## 复测数据（2026-09-01 10:0x）\n\n- compil"
+  },
+  {
+    "number": 105,
+    "title": "搭建行业知识库和产品知识库，FQA的生成",
+    "labels": [],
+    "assignees": [],
+    "state": "open",
+    "updated_at": "2026-08-31T17:28:48+08:00",
+    "body_head": ""
+  },
+  {
+    "number": 104,
+    "title": "[geo-check] P1: 爬虫日志采集受阻 — 生产服务器 SSH 密码认证失败（W36）",
+    "labels": [
+      "geo-check"
+    ],
+    "assignees": [
+      "YiChen"
+    ],
+    "state": "open",
+    "updated_at": "2026-09-13T08:06:15+08:00",
+    "body_head": "## 现象\n\n2026-08-31 GEO 周检执行爬虫日志采集：\n\n```\nsshpass -p '***' ssh ubuntu@111.230.182.6 \"docker logs --tail 20000 ent-nginx 2>&1 | grep -c 'DoubaoBot|...'\"\n```\n\n返回 `Permission denied, please try again.`（sshpass exit 5 = 密码错误）。\n\n- 密码与 skill 参考文档 production-server.md 记录一致（2026-07-21 更新版），仍被拒 → **密码疑似已再次被更改**\n- 公钥认证同样不可用（`Permission denied (publickey,password)`）\n\n## 影响\n\n- W36 weekly metrics `crawler_stats` "
+  },
+  {
+    "number": 96,
+    "title": "龙虾录音卡×WorkBuddy 演示视频多平台投放与流量反馈跟踪",
+    "labels": [],
+    "assignees": [],
+    "state": "open",
+    "updated_at": "2026-08-29T11:15:03+08:00",
+    "body_head": "素材与文案已就绪：`geo-seo/演示视频/发布素材/`（16:9 主版 118s 配乐版、9:16 竖版、封面 2 张、小红书图文 5 张、各平台文案矩阵.md）。视频口径按 live-streaming README v3。\n\n## 素材制作\n\n- [x] 16:9 主版视频（180s→118s 分段变速 + BGM 淡入淡出）\n- [x] 9:16 竖版视频（模糊底 + 标题贴片 + BGM）\n- [x] 封面 16:9 / 9:16\n- [x] 小红书图文 5 张（3:4，步骤卡）\n- [x] 平台文案矩阵（B站/抖音/小红书/知乎/CSDN/百家号头条/IT之家）\n- [x] 视觉质检（敏感信息扫描通过，文字可读性通过）\n\n## 视频发布\n\n- [ ] B站（16:9 主版 + cover_16x9，分区 科技/软件应用）\n- [ ] 头条号/西瓜视频（16:9 主版）\n- ["
+  },
+  {
+    "number": 94,
+    "title": "信源账号登录方式缺口跟进 — 非账号密码登录平台补全",
+    "labels": [],
+    "assignees": [],
+    "state": "open",
+    "updated_at": "2026-08-24T17:48:42+08:00",
+    "body_head": "## 子任务\n- [ ] 掘金设置密码（Santikeji2026xs，重置报\"操作失败\"待处理）\n- [x] 头条号账号密码登录（密码已设 Santikeji2026xs；企业审核已通过）\n- [x] 百家号账号密码登录（手机号已换绑 18129719962，密码已重置统一密码）\n- [ ] 视频号账号密码登录（微信生态，无独立密码；需微信App换绑手机 13927302230→18129719962）\n- [x] B站账号密码登录（统一密码，待验证）\n- [x] 抖音企业号账号密码登录（绑定18129719962，已认证；密码已设统一密码）\n- [x] 小红书账号密码登录（密码已设统一密码 Santikeji2026xs；企业认证已完成 600元/年，账号2771339270）\n- [ ] 极客公园完成注册（图形验证码 + 短信校验码）\n- [ ] 微信公众号激活邮箱跟进\n- [x] "
+  },
+  {
+    "number": 93,
+    "title": "官网geo 的动态内容更改为clawRecoder",
+    "labels": [],
+    "assignees": [],
+    "state": "open",
+    "updated_at": "2026-08-26T14:22:05+08:00",
+    "body_head": ""
+  },
+  {
+    "number": 92,
+    "title": "[geo-check] P0: GEO检测工具失效 — Doubao sessionid cookie过期（全7查询COOKIE_INVALID）",
+    "labels": [
+      "geo-check"
+    ],
+    "assignees": [
+      "YiChen"
+    ],
+    "state": "open",
+    "updated_at": "2026-09-13T08:06:15+08:00",
+    "body_head": "## GEO 检测工具失效 — Doubao sessionid cookie 过期（W35, 2026-08-24）\n\n### 现象\ngeo_citation_check.py 本轮 7 个关键词查询全部失败：\n- 全部报 `COOKIE_INVALID: Doubao 会话已登出（sessionid cookie 过期）`\n- 引用率：**不可判定**（非真实零引用，是工具失效，勿据此判断 GEO 效果）\n\n### 根因（Playwright 网络抓包确认）\n1. **Doubao 页面 UI 改版**：聊天输入框从 `<textarea>` 改为 `[contenteditable=\"true\"]` div，旧选择器匹配不到元素\n2. **脚本内硬编码 sessionid cookie 过期**：发送后 `chat/completion` 返回 200，随后 Doubao 自动调用 "
+  },
+  {
+    "number": 72,
+    "title": "【三体科技】信源账户注册与资料准备 — 双维度信源矩阵（A引用层7项 + B训练层3项）",
+    "labels": [
+      "信源准备"
+    ],
+    "assignees": [
+      "jiangxianghua"
+    ],
+    "state": "open",
+    "updated_at": "2026-08-17T09:58:05+08:00",
+    "body_head": "> **迁移注记**: 本工单由 [geo-seo-project#2](http://192.168.31.162:3000/stkj/geo-seo-project/issues/2) 迁移而来 (2026-08-07)。原工单已关闭。\n\n---\n\n# 【三体科技】信源账户注册与资料准备 — 双维度信源矩阵\n\n> 目标客户：三体网络科技（品牌水印: 三体网络 T3N7 智能调度引擎）\n> 目的：为后续发布**带有关键词组合的 GEO 文章**做信源账户准备\n> 策略依据：`output/marketing/_shared/source-matrix-dual-layer.yaml`（双维度：A 引用层 / B 训练层）\n> 指派：蒋香华 (jiangxianghua) | 标签：信源准备\n\n---\n\n## 零、统一资料包（所有子任务共用，**先行准备**）\n\n以下资料所有子任务都会用到"
+  },
+  {
+    "number": 64,
+    "title": "[fqa-generate] 为 forestry-platform 产品生成 3 条 FQA",
+    "labels": [
+      "fqa-generate"
+    ],
+    "assignees": [
+      "Ruoxi"
+    ],
+    "state": "open",
+    "updated_at": "2026-08-23T08:17:22+08:00",
+    "body_head": "## 策略触发\n- **规则**: `low-citation-add-faq` (P1)\n- **触发条件**: AI引用率 0% < 20% 阈值\n- **策略调整**: 所有文章强制追加 FAQ 区块\n\n## 生成要求\n- **产品**: 林务通智慧林业平台\n- **数量**: 3 条\n- **模板**: strategy/templates/fqa-entry.md\n- **格式**: 每条独立 YAML 文件\n- **输出**: output/fqa/forestry-platform-v2.yaml\n\n---\n指派给：@Ruoxi"
+  },
+  {
+    "number": 57,
+    "title": "[geo-check] P0: DoubaoBot连续零抓取 — 近20000行nginx日志无DoubaoBot记录",
+    "labels": [
+      "geo-check"
+    ],
+    "assignees": [
+      "YiChen"
+    ],
+    "state": "open",
+    "updated_at": "2026-09-13T08:06:14+08:00",
+    "body_head": "## 检测时间: 2026-07-21 (W30)\n\n### 爬虫日志统计 (近20000行)\n\n| 爬虫 | 抓取次数 |\n|------|---------|\n| DoubaoBot | **0** ⚠️ |\n| Bytespider | 32 |\n| DeepSeekBot | 0 |\n| GPTBot | 126 |\n| Googlebot | 73 |\n\n### 分析\nDoubaoBot 在近20000行nginx日志中完全无抓取记录。这直接导致豆包GEO引用率为0%。\n\n### 需排查\n1. robots.txt 是否 block 了 DoubaoBot\n2. sitemap 是否已提交字节搜索资源平台\n3. kamooc.cn 是否被字节搜索引擎收录\n\n---\n指派给：@YiChen"
+  },
+  {
+    "number": 52,
+    "title": "[geo-check] P1: 多品类零曝光 — forestry/industry/network-tech/government-ai",
+    "labels": [
+      "geo-check"
+    ],
+    "assignees": [
+      "YiChen"
+    ],
+    "state": "open",
+    "updated_at": "2026-08-24T10:31:01+08:00",
+    "body_head": "## GEO 周检 — 多品类零曝光\n\n**检测时间**: 2026-07-21\n**影响品类**: forestry, industry, network-tech, government-ai\n**涉及关键词**: 5 个\n\n| 品类 | 关键词 | 引用 | 提及 |\n|------|--------|------|------|\n| forestry | 林务通智慧林业平台 | ❌ | ❌ |\n| forestry | 智慧林业大数据平台建设 | ❌ | ❌ |\n| industry | 编译式智能体内网部署方案 | ❌ | ❌ |\n| network-tech | RouterOS 跨境网络 SD-WAN 配置 | ❌ | ❌ |\n| government-ai | 数字政府 AI智能体 信创 | ❌ | ❌ |\n\n### 优先级: P1\n\n### 建议行动\n1. 检查 Doub"
+  },
+  {
+    "number": 50,
+    "title": "[geo-check] P0: 豆包零引用率 — 7个关键词均无kamooc.cn引用",
+    "labels": [
+      "geo-check"
+    ],
+    "assignees": [
+      "YiChen"
+    ],
+    "state": "open",
+    "updated_at": "2026-08-24T10:31:00+08:00",
+    "body_head": "## GEO 周检 — 豆包引用检测\n\n**检测时间**: 2026-07-21\n**检测平台**: 豆包 (Doubao)\n**引用率**: 0% (0/7 引用, 1/7 仅提及)\n\n### 检测详情\n\n| 查询词 | 品类 | 引用 | 提及 |\n|--------|------|------|------|\n| 公安基层智能助手 AI落地 | company | ❌ | ❌ |\n| 惠州三体网络科技 AI Agent | company | ❌ | ✅ |\n| 林务通智慧林业平台 | forestry | ❌ | ❌ |\n| 智慧林业大数据平台建设 | forestry | ❌ | ❌ |\n| 编译式智能体内网部署方案 | industry | ❌ | ❌ |\n| RouterOS 跨境网络 SD-WAN 配置 | network-tech | ❌ | ❌ |\n| 数字政府 AI智"
+  }
+]

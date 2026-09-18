@@ -1,0 +1,23 @@
+{
+  "name": "daily-2026-09-17.json",
+  "path": "metrics/daily-2026-09-17.json",
+  "sha": "01f0f898539fc28e8c48f11609aaa21a00487559",
+  "last_commit_sha": "5d3639788e81b32049f6a2281361a922d7953206",
+  "last_committer_date": "2026-09-17T09:01:44+08:00",
+  "last_author_date": "2026-09-17T09:01:44+08:00",
+  "type": "file",
+  "size": 1784,
+  "encoding": "base64",
+  "content": "ewogICJkYXRlIjogIjIwMjYtMDktMTciLAogICJjaGVja2VkX2F0IjogIjIwMjYtMDktMTdUMDk6MDA6MDArMDg6MDAiLAogICJzaXRlbWFwX3VybHMiOiAxMTIsCiAgInN0cmFwaV9hcnRpY2xlcyI6IDEwMSwKICAic3RhdGljX3BhZ2VzIjogMTIsCiAgImNvdmVyYWdlIjogMS4wLAogICJzaXRlbWFwX2NvdmVyYWdlIjogewogICAgImNvdmVyYWdlIjogMS4wLAogICAgInNpdGVtYXBfdXJscyI6IDExMiwKICAgICJzdHJhcGlfYXJ0aWNsZXMiOiAxMDEsCiAgICAic3RhdGljX3BhZ2VzIjogMTIKICB9LAogICJyb2JvdHMiOiB7CiAgICAib2siOiB0cnVlLAogICAgImJvdHNfcHJlc2VudCI6IFsKICAgICAgIkRvdWJhb0JvdCIsCiAgICAgICJCeXRlc3BpZGVyIiwKICAgICAgIkRlZXBTZWVrQm90IiwKICAgICAgIkdvb2dsZWJvdCIsCiAgICAgICJCaW5nYm90IiwKICAgICAgIkdQVEJvdCIKICAgIF0sCiAgICAibWlzc2luZyI6IFtdCiAgfSwKICAicm9ib3RzX3R4dCI6ICJhbGwgNiBib3RzIEFsbG93OiAvIHByZXNlbnQiLAogICJqc29ubGQiOiB7CiAgICAib2siOiB0cnVlLAogICAgImJsb2NrcyI6IDgsCiAgICAidHlwZXNfcHJlc2VudCI6IFsKICAgICAgIk9yZ2FuaXphdGlvbiIsCiAgICAgICJXZWJTaXRlIgogICAgXQogIH0sCiAgImhvbWVwYWdlX2h0dHAiOiAyMDAsCiAgImFydGljbGVzX2FwaV9odHRwIjogMjAwLAogICJjaGVja3MiOiB7CiAgICAic2l0ZW1hcF9jb3ZlcmFnZSI6IHsKICAgICAgImNvdmVyYWdlIjogMS4wLAogICAgICAic2l0ZW1hcF91cmxzIjogMTEyLAogICAgICAic3RyYXBpX2FydGljbGVzIjogMTAxLAogICAgICAic3RhdGljX3BhZ2VzIjogMTIKICAgIH0sCiAgICAicm9ib3RzIjogewogICAgICAib2siOiB0cnVlLAogICAgICAiYm90c19wcmVzZW50IjogWwogICAgICAgICJEb3ViYW9Cb3QiLAogICAgICAgICJCeXRlc3BpZGVyIiwKICAgICAgICAiRGVlcFNlZWtCb3QiLAogICAgICAgICJHb29nbGVib3QiLAogICAgICAgICJCaW5nYm90IiwKICAgICAgICAiR1BUQm90IgogICAgICBdLAogICAgICAibWlzc2luZyI6IFtdCiAgICB9LAogICAgImpzb25sZCI6IHsKICAgICAgIm9rIjogdHJ1ZSwKICAgICAgImJsb2NrcyI6IDgsCiAgICAgICJ0eXBlc19wcmVzZW50IjogWwogICAgICAgICJPcmdhbml6YXRpb24iLAogICAgICAgICJXZWJTaXRlIgogICAgICBdCiAgICB9LAogICAgImhvbWVwYWdlX2h0dHAiOiAyMDAsCiAgICAiYXJ0aWNsZXNfYXBpX2h0dHAiOiAyMDAKICB9LAogICJzdGF0dXMiOiAiYWxsX3Bhc3MiLAogICJub3RlcyI6ICI1LzUgU0VPIGNoZWNrcyBwYXNzLiBTaXRlbWFwIGhlYWx0aHkgYXQgMTEyIFVSTHMgKGlkZW50aWNhbCB0byAwOS0xNjsgbm8gY29sbGFwc2UpID0gMTIgc3RhdGljIChpMThuIC9lbiB2YXJpYW50cykgKyAxMDAgYmxvZy4gU3RyYXBpIG1ldGEudG90YWw9MTAxIHdpdGggMTAwIHB1Ymxpc2hlZCBzbHVnIHJlY29yZHM7IHNpdGVtYXAgYmxvZyBzbHVnIHNldCBtYXRjaGVzIFN0cmFwaSBzbHVnIHNldCAxOjEgKDAgbWlzc2luZywgMCBleHRyYSkgLT4gdHJ1ZSBjb3ZlcmFnZSAxMDAlLiBBbGwgYXJ0aWNsZSBVUkxzIHVzZSAvZW4vYmxvZy97c2x1Z30gKGtub3duIHJvdXRpbmcgcmVncmVzc2lvbiwgIzEwNikuIHJvYm90cyA2IGJvdHMgT0s7IEpTT04tTEQgOCBsZCtqc29uIG9jY3VycmVuY2VzLCBPcmdhbml6YXRpb24rV2ViU2l0ZSBwcmVzZW50LiBEYWlseSBtZXRyaWMgZ2FwcyBpbiBoaXN0b3J5OiAwOC0yMiwgMDgtMjcsIDA5LTA1LCAwOS0wNi4iCn0=",
+  "target": null,
+  "url": "http://192.168.31.162:3000/api/v1/repos/stkj/geo-seo/contents/metrics/daily-2026-09-17.json?ref=main",
+  "html_url": "http://192.168.31.162:3000/stkj/geo-seo/src/branch/main/metrics/daily-2026-09-17.json",
+  "git_url": "http://192.168.31.162:3000/api/v1/repos/stkj/geo-seo/git/blobs/01f0f898539fc28e8c48f11609aaa21a00487559",
+  "download_url": "http://192.168.31.162:3000/stkj/geo-seo/raw/branch/main/metrics/daily-2026-09-17.json",
+  "submodule_git_url": null,
+  "_links": {
+    "self": "http://192.168.31.162:3000/api/v1/repos/stkj/geo-seo/contents/metrics/daily-2026-09-17.json?ref=main",
+    "git": "http://192.168.31.162:3000/api/v1/repos/stkj/geo-seo/git/blobs/01f0f898539fc28e8c48f11609aaa21a00487559",
+    "html": "http://192.168.31.162:3000/stkj/geo-seo/src/branch/main/metrics/daily-2026-09-17.json"
+  }
+}

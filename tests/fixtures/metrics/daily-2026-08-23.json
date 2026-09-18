@@ -1,0 +1,29 @@
+{
+  "date": "2026-08-23",
+  "sitemap_urls": 87,
+  "strapi_articles": 83,
+  "sitemap_coverage": {
+    "coverage": 1.0,
+    "sitemap_urls": 87,
+    "strapi_articles": 83,
+    "static_pages": 4
+  },
+  "robots": {
+    "DoubaoBot": "ok",
+    "Bytespider": "ok",
+    "DeepSeekBot": "ok",
+    "GPTBot": "ok",
+    "Googlebot": "ok",
+    "Bingbot": "ok"
+  },
+  "robots_ai_bots_count": 6,
+  "jsonld": {
+    "application_ld_json_blocks": 2,
+    "Organization": true,
+    "WebSite": true
+  },
+  "http_status": 200,
+  "articles_api_status": 200,
+  "checks_all_ok": true,
+  "notes": "SITEMAP STABLE: 2026-08-23 sitemap.xml has 87 URLs (4 static + 83 articles, all santiy-ai.com) -> coverage 87/(83+4)=100%. Strapi total=83 (meta.pagination.total, +5 vs 78: 0816 batch 5 articles now published). Continues recovery streak after 08-17/08-20 collapses. robots.txt all 6 AI bots Allow:/. JSON-LD 2 blocks Organization+WebSite. HTTP 200. articles API 200. All checks pass, no new seo-monitor issue created; tracking via #85."
+}

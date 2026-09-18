@@ -1,0 +1,29 @@
+{
+  "date": "2026-08-15",
+  "sitemap_urls": 82,
+  "strapi_articles": 78,
+  "sitemap_coverage": {
+    "coverage": 1.0,
+    "sitemap_urls": 82,
+    "strapi_articles": 78,
+    "static_pages": 4
+  },
+  "robots": {
+    "DoubaoBot": "ok",
+    "Bytespider": "ok",
+    "DeepSeekBot": "ok",
+    "GPTBot": "ok",
+    "Googlebot": "ok",
+    "Bingbot": "ok"
+  },
+  "robots_ai_bots_count": 6,
+  "jsonld": {
+    "application_ld_json_blocks": 2,
+    "Organization": true,
+    "WebSite": true
+  },
+  "http_status": 200,
+  "articles_api_status": 200,
+  "checks_all_ok": true,
+  "notes": "robots: all 6 bots Allow:/ ; JSON-LD Organization+WebSite found in RSC payload ; domain rebranded to santiy-ai.com"
+}

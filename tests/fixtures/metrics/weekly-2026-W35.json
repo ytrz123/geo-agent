@@ -1,0 +1,51 @@
+{
+  "platform": "doubao",
+  "week": "2026-W35",
+  "checked_at": "2026-08-24T10:31:00",
+  "crawler_stats": {
+    "doubaobot": 0,
+    "bytespider": 678,
+    "deepseekbot": 23,
+    "gptbot": 1365,
+    "googlebot": 610,
+    "total_ai_bots": 2676,
+    "sample_size": "121374 lines (full docker logs)",
+    "doubaobot_note": "连续零抓取持续（全量确认，非采样误差）"
+  },
+  "citation_results": {
+    "status": "invalid",
+    "reason": "Doubao sessionid cookie 过期，全部 7 查询 COOKIE_INVALID（工具失效，引用率不可判定）",
+    "root_cause": "① Doubao 聊天输入框从 <textarea> 改为 [contenteditable=true] div；② 脚本硬编码 sessionid cookie 过期，发送后 passport/web/logout 自动登出",
+    "script_patched": true,
+    "total_queries": 7,
+    "cited_count": 0,
+    "mentioned_count": 0,
+    "errored_count": 7,
+    "citation_rate": null,
+    "queries": [
+      {"query": "公安基层智能助手 AI落地", "category": "company", "cited": false, "mentioned": false, "error": "COOKIE_INVALID"},
+      {"query": "林务通智慧林业平台", "category": "forestry", "cited": false, "mentioned": false, "error": "COOKIE_INVALID"},
+      {"query": "编译式智能体内网部署方案", "category": "industry", "cited": false, "mentioned": false, "error": "COOKIE_INVALID"},
+      {"query": "RouterOS 跨境网络 SD-WAN 配置", "category": "network-tech", "cited": false, "mentioned": false, "error": "COOKIE_INVALID"},
+      {"query": "惠州三体网络科技 AI Agent", "category": "company", "cited": false, "mentioned": false, "error": "COOKIE_INVALID"},
+      {"query": "智慧林业大数据平台建设", "category": "forestry", "cited": false, "mentioned": false, "error": "COOKIE_INVALID"},
+      {"query": "数字政府 AI智能体 信创", "category": "government-ai", "cited": false, "mentioned": false, "error": "COOKIE_INVALID"}
+    ]
+  },
+  "recommendations": [
+    {
+      "priority": "P0",
+      "type": "tooling_failure",
+      "rule": "检测工具失效",
+      "finding": "全部 7 个查询失败（COOKIE_INVALID: Doubao 会话已登出，sessionid cookie 过期），本轮引用率不可判定",
+      "action": "刷新 Doubao sessionid cookie（浏览器 DevTools → Cookies → doubao.com）替换脚本 COOKIE 常量后重跑",
+      "assignee": "YiChen",
+      "gitea_label": "geo-check"
+    }
+  ],
+  "issues_updated": [50, 52, 57],
+  "issues_closed": [],
+  "issues_new": [92],
+  "article_generate_skip_reason": "脚本未产出 P2 建议（全查询工具失效，不虚构零曝光）；且 #86-#90 全品类 article-generate 仍在 open",
+  "notes": "引用率数据缺失一周，待 cookie 刷新补检；DoubaoBot 连续零抓取继续跟踪 #57；检测工具已修复（contenteditable 兼容 + cookie 失效快速检测）"
+}

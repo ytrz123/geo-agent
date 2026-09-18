@@ -1,0 +1,41 @@
+{
+  "date": "2026-09-03",
+  "checks": {
+    "sitemap_coverage": {
+      "coverage": 1.082,
+      "sitemap_urls": 105,
+      "strapi_articles": 93,
+      "static_pages": 4,
+      "note": "sitemap healthy: 93 blog URLs + 12 static, all kamooc.cn domain (rebrand domain reverted in sitemap); Strapi total recovered from 83 (W35) to 93"
+    },
+    "robots": {
+      "ok": true,
+      "bots_found": [
+        "DoubaoBot",
+        "Bytespider",
+        "DeepSeekBot",
+        "GPTBot",
+        "Googlebot",
+        "Bingbot"
+      ],
+      "missing": []
+    },
+    "jsonld": {
+      "ok": true,
+      "ld_json_occurrences": 8,
+      "Organization": true,
+      "WebSite": true
+    },
+    "homepage_http": {
+      "status": 200,
+      "ok": true
+    },
+    "strapi_api": {
+      "status": 200,
+      "ok": true,
+      "total_articles": 93
+    }
+  },
+  "sitemap_collapse": false,
+  "notes": "All 5 checks normal. Sitemap no collapse (105 URLs). Strapi /api/articles HTTP 200 — #95 (500 state) appears resolved. Coverage >100% because sitemap includes /en localized pages (12 extra)."
+}

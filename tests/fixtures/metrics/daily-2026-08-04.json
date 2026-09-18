@@ -1,0 +1,30 @@
+{
+  "date": "2026-08-04",
+  "site": "kamooc.cn (santiy-ai.com)",
+  "checks": {
+    "sitemap_coverage": {
+      "sitemap_urls": 57,
+      "articles": 53,
+      "coverage": 1.0
+    },
+    "robots_txt": {
+      "all_bots_present": true,
+      "bots": [
+        "DoubaoBot",
+        "Bytespider",
+        "DeepSeekBot",
+        "Googlebot",
+        "Bingbot",
+        "GPTBot"
+      ]
+    },
+    "jsonld": {
+      "Organization": true,
+      "WebSite": true,
+      "blocks": 2
+    },
+    "homepage_http": 200,
+    "articles_api_http": 200
+  },
+  "issues_created": 0
+}

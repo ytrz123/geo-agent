@@ -1,0 +1,25 @@
+{
+  "date": "2026-08-02",
+  "sitemap_coverage": {
+    "sitemap_urls": 57,
+    "strapi_articles_total": 53,
+    "coverage": 1.0
+  },
+  "robots_txt": {
+    "DoubaoBot": "Allow: /",
+    "Bytespider": "Allow: /",
+    "DeepSeekBot": "Allow: /",
+    "Googlebot": "Allow: /",
+    "Bingbot": "Allow: /",
+    "GPTBot": "Allow: /"
+  },
+  "json_ld": {
+    "Organization": true,
+    "WebSite": true
+  },
+  "http_status": 200,
+  "api_articles": {
+    "status": 200,
+    "total": 53
+  }
+}

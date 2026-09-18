@@ -1,0 +1,89 @@
+{
+  "platform": "doubao",
+  "week": "2026-W36",
+  "checked_at": "2026-08-31T10:02:19",
+  "crawler_stats": null,
+  "crawler_stats_status": "unavailable",
+  "crawler_stats_reason": "生产服务器 SSH 密码认证失败（sshpass exit 5；密码与 production-server.md 记录一致仍被拒，公钥亦不可用），爬虫日志无法采集，跟踪工单 #104。#57 DoubaoBot streak 本周不可验证。",
+  "citation_results": {
+    "status": "invalid",
+    "reason": "Doubao sessionid cookie 连续第 2 周过期未刷新，全部 7 查询 COOKIE_INVALID，引用率不可判定（脚本快速失败检测生效，107s 跑完无挂起）",
+    "total_queries": 7,
+    "cited_count": 0,
+    "mentioned_count": 0,
+    "errored_count": 7,
+    "citation_rate": null,
+    "queries": [
+      {
+        "query": "公安基层智能助手 AI落地",
+        "category": "company",
+        "cited": false,
+        "mentioned": false,
+        "error": "COOKIE_INVALID"
+      },
+      {
+        "query": "林务通智慧林业平台",
+        "category": "forestry",
+        "cited": false,
+        "mentioned": false,
+        "error": "COOKIE_INVALID"
+      },
+      {
+        "query": "编译式智能体内网部署方案",
+        "category": "industry",
+        "cited": false,
+        "mentioned": false,
+        "error": "COOKIE_INVALID"
+      },
+      {
+        "query": "RouterOS 跨境网络 SD-WAN 配置",
+        "category": "network-tech",
+        "cited": false,
+        "mentioned": false,
+        "error": "COOKIE_INVALID"
+      },
+      {
+        "query": "惠州三体网络科技 AI Agent",
+        "category": "company",
+        "cited": false,
+        "mentioned": false,
+        "error": "COOKIE_INVALID"
+      },
+      {
+        "query": "智慧林业大数据平台建设",
+        "category": "forestry",
+        "cited": false,
+        "mentioned": false,
+        "error": "COOKIE_INVALID"
+      },
+      {
+        "query": "数字政府 AI智能体 信创",
+        "category": "government-ai",
+        "cited": false,
+        "mentioned": false,
+        "error": "COOKIE_INVALID"
+      }
+    ]
+  },
+  "recommendations": [
+    {
+      "priority": "P0",
+      "type": "tooling_failure",
+      "rule": "检测工具失效",
+      "finding": "全部 7 个查询 COOKIE_INVALID（Doubao sessionid cookie 过期，连续第 2 周），本轮引用率不可判定",
+      "action": "刷新 Doubao sessionid cookie（浏览器 DevTools → Cookies → doubao.com）替换脚本 COOKIE 常量后重跑",
+      "assignee": "YiChen",
+      "gitea_label": "geo-check"
+    }
+  ],
+  "issues_updated": [
+    92,
+    57
+  ],
+  "issues_closed": [],
+  "issues_new": [
+    104
+  ],
+  "article_generate_skip_reason": "脚本未产出 P2 建议（全查询工具失效，不虚构零曝光）；且 #97-#101 全品类 article-generate 仍在 open",
+  "notes": "去重生效：P0 tooling_failure 匹配既有 #92 → 评论更新不新建；本轮仅新建 #104（SSH 凭据阻塞爬虫日志采集，需 liujia 提供新密码）。引用率已连续 2 周无数据，cookie 刷新是当前 GEO 检测的最高优先级待办。"
+}

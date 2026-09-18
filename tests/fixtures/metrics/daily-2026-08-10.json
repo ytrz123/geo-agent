@@ -1,0 +1,42 @@
+{
+  "date": "2026-08-10",
+  "checked_at": "2026-08-10T09:00:00+08:00",
+  "sitemap": {
+    "url": "https://www.kamooc.cn/sitemap.xml",
+    "url_count": 72,
+    "status": "ok"
+  },
+  "strapi_articles_total": 68,
+  "sitemap_coverage": {
+    "coverage": 1.0,
+    "sitemap_urls": 72,
+    "strapi_articles": 68,
+    "formula": "72/(68+4) = 100%",
+    "status": "ok"
+  },
+  "robots": {
+    "url": "https://www.kamooc.cn/robots.txt",
+    "bots": {
+      "DoubaoBot": "Allow:/",
+      "Bytespider": "Allow:/",
+      "DeepSeekBot": "Allow:/",
+      "Googlebot": "Allow:/",
+      "Bingbot": "Allow:/",
+      "GPTBot": "Allow:/"
+    },
+    "status": "ok",
+    "note": "sitemap 指向 https://www.santiy-ai.com/sitemap.xml (rebrand 后域名)"
+  },
+  "jsonld": {
+    "ld_json_occurrences": 2,
+    "has_Organization": true,
+    "has_WebSite": true,
+    "standard_script_tags": 0,
+    "status": "ok",
+    "note": "Next.js RSC payload 转义内嵌，2处 ld+json 引用，Organization/WebSite 均在"
+  },
+  "homepage_http": 200,
+  "articles_api_http": 200,
+  "all_checks_passed": true,
+  "issues_created": []
+}

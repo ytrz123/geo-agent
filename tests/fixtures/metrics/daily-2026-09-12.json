@@ -1,0 +1,49 @@
+{
+  "date": "2026-09-12",
+  "checked_at": "2026-09-12T09:00:00+08:00",
+  "sitemap_urls": 106,
+  "strapi_articles": 94,
+  "static_pages": 4,
+  "coverage": 1.082,
+  "sitemap_coverage": {
+    "coverage": 1.082,
+    "sitemap_urls": 106,
+    "strapi_articles": 94,
+    "static_pages": 4
+  },
+  "robots": {
+    "ok": true,
+    "bots_present": ["DoubaoBot", "Bytespider", "DeepSeekBot", "Googlebot", "Bingbot", "GPTBot"],
+    "missing": []
+  },
+  "robots_txt": "all 6 bots Allow: / present",
+  "jsonld": {
+    "ok": true,
+    "blocks": 8,
+    "types_present": ["Organization", "WebSite"]
+  },
+  "homepage_http": 200,
+  "articles_api_http": 200,
+  "checks": {
+    "sitemap_coverage": {
+      "coverage": 1.082,
+      "sitemap_urls": 106,
+      "strapi_articles": 94,
+      "static_pages": 4
+    },
+    "robots": {
+      "ok": true,
+      "bots_present": ["DoubaoBot", "Bytespider", "DeepSeekBot", "Googlebot", "Bingbot", "GPTBot"],
+      "missing": []
+    },
+    "jsonld": {
+      "ok": true,
+      "blocks": 8,
+      "types_present": ["Organization", "WebSite"]
+    },
+    "homepage_http": 200,
+    "articles_api_http": 200
+  },
+  "status": "all_pass",
+  "notes": "5/5 SEO checks pass. Sitemap healthy at 106 URLs (no collapse). Static page count now 12 (i18n added /en variants) so article URLs = 106-12 = 94 = Strapi total exactly; nominal coverage vs legacy +4 denominator = 108.2%. Daily metric gaps observed in remote history: 2026-09-05, 2026-09-06 missing (weekend); known earlier gaps 08-22, 08-27. No open article-generate issues -> no content generation triggered."
+}

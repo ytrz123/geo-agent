@@ -1,0 +1,41 @@
+{
+  "date": "2026-08-29",
+  "checked_at": "2026-08-29T09:05:00+08:00",
+  "checks": {
+    "sitemap": {
+      "sitemap_urls": 92,
+      "static_pages": 4,
+      "blog_urls": 88,
+      "strapi_articles": null,
+      "coverage": null,
+      "status": "structure_healthy_denominator_unavailable",
+      "domain_in_sitemap": "www.santiy-ai.com",
+      "lastmod": "2026-08-28T01:01:12.718Z"
+    },
+    "robots": {
+      "robots_txt": "ok",
+      "bots_present": [
+        "DoubaoBot",
+        "Bytespider",
+        "DeepSeekBot",
+        "GPTBot",
+        "Googlebot",
+        "Bingbot"
+      ],
+      "status": "ok"
+    },
+    "jsonld": {
+      "ld_json_blocks": 2,
+      "organization": true,
+      "website": true,
+      "status": "ok"
+    },
+    "homepage_http": 200,
+    "articles_api": {
+      "http_code": 500,
+      "status": "anomaly",
+      "detail": "InternalServerError on all query variants (list/filtered/paginated), ~5s latency each"
+    }
+  },
+  "notes": "Strapi GET /api/articles returns HTTP 500 (persisted across 4 probes incl. filters+pagination). Next.js frontend still serves cached pages (homepage 200, sitemap 92 URLs built 2026-08-28). strapi_articles denominator unavailable -> sitemap coverage NOT computed this day (do not treat as 0% in weekly aggregation). seo-monitor issue created for YiChen. 88 blog URLs in sitemap vs ~88 expected articles (83 @08-23 + 5 published 08-25) suggests sitemap itself is complete."
+}

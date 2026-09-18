@@ -1,0 +1,39 @@
+{
+  "week": "2026-W30",
+  "checked_at": "2026-07-21T15:45:00",
+  "crawler_logs": {
+    "sample_size": 20000,
+    "DoubaoBot": 0,
+    "Bytespider": 32,
+    "DeepSeekBot": 0,
+    "GPTBot": 126,
+    "Googlebot": 73,
+    "total": 231
+  },
+  "geo_citation": {
+    "platform": "doubao",
+    "citation_rate": 0.0,
+    "total_queries": 7,
+    "cited_count": 0,
+    "mentioned_count": 1,
+    "mentioned_queries": [
+      "惠州三体网络科技 AI Agent"
+    ]
+  },
+  "issues": {
+    "updated": [
+      50,
+      51,
+      52
+    ],
+    "created": [
+      57
+    ],
+    "article_generate_existing": [
+      53,
+      54,
+      55,
+      56
+    ]
+  }
+}

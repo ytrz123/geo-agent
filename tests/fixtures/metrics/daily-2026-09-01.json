@@ -1,0 +1,41 @@
+{
+  "date": "2026-09-01",
+  "checked_at": "2026-09-01T09:00:00+08:00",
+  "sitemap_coverage": {
+    "coverage": null,
+    "sitemap_urls": 4,
+    "strapi_articles": null,
+    "static_pages": 4,
+    "sitemap_lastmod": "2026-08-31T01:01:28.316Z",
+    "note": "coverage=null: Strapi /api/articles HTTP 500 -> denominator unavailable. Do NOT treat as 0% in weekly aggregation."
+  },
+  "robots": {
+    "ok": true,
+    "bots_present": [
+      "DoubaoBot",
+      "Bytespider",
+      "DeepSeekBot",
+      "Googlebot",
+      "Bingbot",
+      "GPTBot"
+    ],
+    "all_allow_root": true
+  },
+  "jsonld": {
+    "ok": true,
+    "ldjson_blocks": 2,
+    "schemas_present": [
+      "Organization",
+      "WebSite"
+    ],
+    "method": "RSC payload substring check"
+  },
+  "http_status": 200,
+  "articles_api_status": 500,
+  "notes": [
+    "SITEMAP COLLAPSED day 3 (consecutive: 08-30, 08-31, 09-01): only 4 static URLs, 0 blog articles. Sitemap lastmod 2026-08-31T01:01:28Z = not rebuilt since 08-31 01:01 UTC. Tracking #103 (comment update, no new issue).",
+    "Strapi /api/articles HTTP 500 day 4 (#95). Front-end/blog pages still served (homepage HTTP 200).",
+    "article-generate #97-#101: all 5 already have ③ content generated (08-30 batch), pending publish blocked by #95. No re-generation.",
+    "Known missing daily files: 08-22, 08-27 (cron gaps, not incidents)."
+  ]
+}

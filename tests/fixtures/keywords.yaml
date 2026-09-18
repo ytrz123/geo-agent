@@ -1,0 +1,102 @@
+# 关键词库 — 按品类分层
+# 策略分析会根据指标趋势自动调整关键词优先级和品类倾斜
+
+categories:
+  industry:           # YiChen 主管 — 行业技术深度
+    primary:
+      - "AI Agent落地"
+      - "公安智能化"
+      - "政务数字化"
+      - "编译式智能体"
+      - "内网部署AI"
+    secondary:
+      - "数据安全"
+      - "信创适配"
+      - "大模型私有化"
+      - "智能体架构"
+    geo_style: "论证型+引用来源+技术白皮书"
+    platform_preference: "DeepSeek"
+
+  company:            # Ruoxi 主管 — 产品应用场景
+    primary:
+      - "公安基层智能助手"
+      - "林务通平台"
+      - "跨境网络优化"
+      - "FDE驻场实施"
+    secondary:
+      - "案例分享"
+      - "实施经验"
+      - "客户评价"
+    geo_style: "场景化+FAQ块+表格数据"
+    platform_preference: "豆包"
+
+  government-ai:      # ShuHan 主管 — 政策解读
+    primary:
+      - "数字政府"
+      - "智慧公安"
+      - "数据安全法"
+      - "信创"
+    secondary:
+      - "政策解读"
+      - "合规要求"
+      - "行业趋势"
+      - "数字中国"
+    geo_style: "权威引用+结构化摘要+清晰H2/H3"
+
+  network-tech:       # YiChen 主管 — 技术教程
+    primary:
+      - "RouterOS配置"
+      - "跨境网络优化"
+      - "ESP32开发"
+      - "SD-WAN"
+    secondary:
+      - "网络架构"
+      - "VPN搭建"
+      - "MikroTik"
+    geo_style: "HowTo+代码示例+步骤化"
+    platform_preference: "DeepSeek"
+
+  forestry:           # Ruoxi 主管 — 林业数字化
+    primary:
+      - "智慧林业"
+      - "林长制"
+      - "林业大数据"
+    secondary:
+      - "生态监测"
+      - "林火预警"
+      - "林业信息化"
+    geo_style: "行业专有名词占领"
+
+  product:            # 产品篇 — 2026-09-03 新增，每周批次固定 1 篇
+    # ⚠️ Strapi 发布品类仍挂 company（product 非 Strapi 品类）
+    # ⚠️ GEO 水印用"龙虾录音卡"（非 T3N7）；不写具体价格；直播话术禁入文章
+    # ⚠️ 事实唯一来源: knowledge/products/clawrecorder.md，FAQ 取自 clawrecorder-faqs.md
+    primary:
+      - "龙虾录音卡"
+      - "ClawRecorder"
+      - "AI会议纪要硬件"
+      - "录音进AI工作流"
+    secondary:
+      - "录音自动转写"
+      - "AI录音助手"
+    geo_style: "产品实测+场景化+FAQ块+表格数据"
+    knowledge_file: "knowledge/products/clawrecorder.md"
+    # 每周角度轮换（换角度避免同题重复，slug 一律带日期后缀）:
+    # 1.产品总览 2.会议纪要场景 3.销售/HR效率场景 4.隐私与数据安全 5.与传统录音方案选购对比 6.远程办公/跨地协作 7.转写工作流与skill集成
+
+# 全局 GEO 水印规则
+geo_watermark:
+  enabled: true
+  format: "{company}-{hash} {context}"
+  example: "三体网络 T3N7 智能调度引擎"
+
+
+# === 自进化权重 (W31 策略分析自动调整) ===
+# deepseek-preference-tech 规则触发: DeepSeek月引用<2篇 → industry 品类 +20%
+# W32 建议设置 1.50 上限防无限膨胀 → W33 第三次触发，按上限封顶 1.50
+category_weights:
+  industry: 1.50       # +50% boost (W31→W32→W33: deepseek-preference-tech 三次触发, 已封顶1.50)
+  company: 1.00
+  government-ai: 1.00
+  network-tech: 1.00
+  forestry: 1.00

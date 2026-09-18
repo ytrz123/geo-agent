@@ -1,0 +1,42 @@
+{
+  "week": "2026-W28",
+  "generated_at": "2026-07-10T11:51:00Z",
+  "crawler_stats": {
+    "doubaobot": 0,
+    "bytespider": 31,
+    "deepseekbot": 10,
+    "gptbot": 177,
+    "googlebot": 140,
+    "total_bot_hits": 358,
+    "note": "Log source: docker logs ent-nginx (27022 lines total)"
+  },
+  "ai_citations": {
+    "doubao": "requires_login",
+    "deepseek": "requires_login",
+    "note": "Both platforms require authentication; manual verification needed"
+  },
+  "article_inventory": {
+    "total_published": 12,
+    "published_today": 11,
+    "crawled_articles": [
+      "e2e-test"
+    ],
+    "uncrawled_new_articles": 11,
+    "crawl_delay_hours": "N/A (published <24h ago)",
+    "gptbot_blog_crawls": [
+      {
+        "article": "e2e-test",
+        "last_crawled": "2026-07-06T21:30:47Z",
+        "first_crawled": "2026-06-24T12:49:03Z"
+      }
+    ]
+  },
+  "alerts": [
+    {
+      "type": "doubaobot_zero",
+      "severity": "high",
+      "detail": "DoubaoBot has ZERO crawl records in entire log (27022 lines). Last log entry: 2026-07-10 03:47 UTC",
+      "action": "created geo-check issue"
+    }
+  ]
+}

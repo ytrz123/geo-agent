@@ -1,0 +1,42 @@
+{
+  "date": "2026-09-02",
+  "checks": {
+    "sitemap_coverage": {
+      "sitemap_urls": 105,
+      "strapi_articles": 93,
+      "static_pages": 12,
+      "coverage": 1.0,
+      "coverage_raw": 1.082,
+      "note": "RECOVERY after 3-day collapse (08-30..09-01). Sitemap rebuilt lastmod=2026-09-01T02:22:31Z with all 93 blog routes (/en/blog/*). First fetch of run returned 12-URL collapsed variant; 6/6 subsequent fetches returned 105 -> intermittent collapsed-response serving persists, sustained state healthy."
+    },
+    "robots": {
+      "status": "ok",
+      "bots_present": [
+        "DoubaoBot",
+        "Bytespider",
+        "DeepSeekBot",
+        "Googlebot",
+        "Bingbot",
+        "GPTBot"
+      ],
+      "all_allow_root": true
+    },
+    "jsonld": {
+      "status": "ok",
+      "ldjson_occurrences": 8,
+      "organization": true,
+      "website": true,
+      "note": "RSC payload pattern, substring check"
+    },
+    "homepage_http": 200,
+    "strapi_api_http": 200,
+    "strapi_articles_total": 93,
+    "strapi_note": "Strapi /api/articles RECOVERED (HTTP 200, meta.pagination.total=93) after 4-day 500 outage (#95, now closed)"
+  },
+  "anomalies": [],
+  "actions": [
+    "no new issues: all 5 checks PASS (coverage capped 100%)",
+    "comment update on #103: recovery confirmed, dynamic routes returned after Strapi recovery (correlation confirmed), intermittent collapsed variant still served once"
+  ],
+  "notes": "coverage=null rule not triggered today; denominator available. One collapsed first-fetch treated as intermittent serving, tracked in #103 (open). metrics continuity: 08-27 gap known; no new gaps."
+}

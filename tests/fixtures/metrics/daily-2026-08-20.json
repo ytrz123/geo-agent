@@ -1,0 +1,29 @@
+{
+ "date": "2026-08-20",
+ "sitemap_urls": 4,
+ "strapi_articles": 78,
+ "sitemap_coverage": {
+  "coverage": 0.0488,
+  "sitemap_urls": 4,
+  "strapi_articles": 78,
+  "static_pages": 4
+ },
+ "robots": {
+  "DoubaoBot": "ok",
+  "Bytespider": "ok",
+  "DeepSeekBot": "ok",
+  "GPTBot": "ok",
+  "Googlebot": "ok",
+  "Bingbot": "ok"
+ },
+ "robots_ai_bots_count": 6,
+ "jsonld": {
+  "application_ld_json_blocks": 2,
+  "Organization": true,
+  "WebSite": true
+ },
+ "http_status": 200,
+ "articles_api_status": 200,
+ "checks_all_ok": false,
+ "notes": "SITEMAP REGRESSION: 2026-08-19 recovered to 82 URLs (100%) but 2026-08-20 collapsed again to 4 static URLs (all santiy-ai.com) -> coverage 4/(78+4)=4.9%. 78 blog article URLs missing from sitemap again. robots.txt all 6 AI bots Allow:/. JSON-LD 2 blocks Organization+WebSite. HTTP 200. Open seo-monitor issue #85 updated."
+}

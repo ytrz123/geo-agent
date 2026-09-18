@@ -1,0 +1,94 @@
+# 测试用【虚构站点】—— 刻意与任何真实站点无关。
+# 作用：整套测试都跑在这个假站点上，所以一旦代码里残留任何真实站点/品牌硬编码，
+#       测试会立刻失败。这本身就是「通用性」的回归保护。
+site:
+  name: 示例科技
+  base_url: https://test.example.com
+  extra_hosts:
+    - test.example.com
+    - legacy.example.com
+  brand_aliases:
+    - 示例科技
+    - ExampleTech
+
+publish:
+  cms: none                     # 测试不发布
+  base_url: https://test.example.com
+  token_env: TEST_STRAPI_TOKEN
+  content_type: articles
+  category_field: category
+
+routes:
+  article_prefix: /articles     # 刻意与真实站点不同（/blog）→ 验证路由可配
+  locale_prefixes:
+    - ""
+    - /en
+  static_paths:
+    - /
+    - /goods
+    - /articles
+    - /about
+    - /en
+    - /en/goods
+    - /en/articles
+    - /en/about
+
+categories:
+  - id: product-news
+    name: 产品动态
+    assignee: Alice
+    weight: 1.00
+    style: 场景化+FAQ
+  - id: tech-deep-dive
+    name: 技术深度
+    assignee: Bob
+    weight: 1.20
+    style: 论证型
+
+batch:
+  categories_per_week: 1
+  product_slot: true
+  product_category: product-news
+
+watermark:
+  default: 示例科技引擎
+  min_occurrences: 2
+  overrides:
+    - when_knowledge: widget-x
+      text: 示例小部件 WidgetX
+
+quality:
+  min_chars: 1500
+  min_h2: 4
+  min_faq: 4
+  min_tables: 2
+  require_section_faq: true
+  timeliness_phrase: 本文数据更新至
+  max_fix_rounds: 3
+
+citation_check:
+  # engine 用 doubao：测试里 subprocess 被 monkeypatch，不会真起浏览器；
+  # 这样能验证「检测脚本 → 路由判定 → 工单」整条链路。
+  engine: doubao
+  cookie_env: TEST_DOUBAO_COOKIE
+  queries:
+    - {q: "示例科技 产品怎么样", category: product-news}
+    - {q: "示例科技 技术方案选型", category: tech-deep-dive}
+
+workflow:
+  labels:
+    seo_monitor: seo-monitor
+    geo_check: geo-check
+    article_generate: article-generate
+    fqa_generate: fqa-generate
+    strategy_review: strategy-review
+
+people:
+  default_assignee: Alice
+  assignees: [Alice, Bob]
+
+thresholds:
+  sitemap_coverage_min: 0.90
+  lcp_max_seconds: 4.0
+  doubaobot_zero_streak_days: 3
+  static_pages_expected: 8

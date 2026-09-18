@@ -1,0 +1,111 @@
+# 自进化规则引擎
+# 每周日 Hermes 读取过去 4 周指标数据，逐条检查触发条件
+# 触发 → 自动调整策略 / 创建内容工单
+
+rules:
+  - id: "low-citation-add-faq"
+    name: "低引用率→增加FAQ块"
+    description: "AI引用率低于20%时，强制所有文章追加FAQ区块"
+    trigger:
+      metric: "ai_citation_rate"
+      operator: "<"
+      threshold: 0.20
+      window_weeks: 4
+    action:
+      type: "patch_template"
+      target: "strategy/templates/article-geo.md"
+      change: "追加 <section data-faq> 强制区块"
+    priority: P1
+
+  - id: "zero-click-keywords"
+    name: "高曝光零点击→生成专题"
+    description: "GSC 显示某关键词曝光量高但零点击，生成针对性文章"
+    trigger:
+      metric: "gsc_impressions_no_click"
+      operator: ">"
+      threshold: 1000
+      window_weeks: 2
+    action:
+      type: "create_issue"
+      label: "article-generate"
+      assignee: "YiChen"
+      template: "针对关键词 [{keyword}] 生成专题文章（曝光{impressions}次零点击）"
+    priority: P0
+
+  - id: "deepseek-preference-tech"
+    name: "DeepSeek引用低→倾斜技术深度"
+    description: "DeepSeek 月引用 < 2 篇时，industry 品类占比提升"
+    trigger:
+      metric: "deepseek_citations_monthly"
+      operator: "<"
+      threshold: 2
+      window_weeks: 4
+    action:
+      type: "adjust_category_weight"
+      target: "strategy/keywords.yaml"
+      change: "industry 品类权重 +20% (从当前值)"
+      max: 1.50   # W35 策略Cron添加: 权重上限, 防止连续触发无限膨胀 (W31→W33 1.0→1.50)
+    priority: P1
+
+  - id: "doubao-stop-crawling"
+    name: "DoubaoBot停止抓取→紧急排查"
+    description: "DoubaoBot 连续3天无抓取记录"
+    trigger:
+      metric: "doubaobot_crawl_count"
+      operator: "=="
+      threshold: 0
+      consecutive_days: 3
+    action:
+      type: "create_issue"
+      label: "seo-monitor"
+      assignee: "YiChen"
+      template: "DoubaoBot 连续3天({dates})无抓取记录，紧急排查: 1) robots.txt 2) sitemap可达性 3) 服务器状态"
+    priority: P0
+
+  - id: "crawl-delay-72h"
+    name: "新文章72h未被爬→GEO推送"
+    description: "新文章发布72小时后仍未被任何AI爬虫抓取"
+    trigger:
+      metric: "new_article_crawl_delay_hours"
+      operator: ">"
+      threshold: 72
+    action:
+      type: "create_issue"
+      label: "geo-check"
+      assignee: "ShuHan"
+      template: "文章 [{slug}] 发布72h未被AI爬虫抓取。建议: 1) 提交URL到搜索引擎 2) 检查结构化数据 3) 社交平台外链"
+    priority: P1
+
+  - id: "lcp-degraded"
+    name: "LCP劣化→性能工单"
+    description: "首页 LCP 超过 4s"
+    trigger:
+      metric: "lcp_seconds"
+      operator: ">"
+      threshold: 4.0
+    action:
+      type: "create_issue"
+      label: "seo-monitor"
+      assignee: "YiChen"
+      template: "首页 LCP={value}s 超过4s阈值，需优化: 1) 图片压缩 2) 字体加载策略 3) 首屏JS体积"
+    priority: P1
+
+  - id: "sitemap-coverage-drop"
+    name: "索引覆盖率下降"
+    description: "sitemap 覆盖率低于 90%"
+    trigger:
+      metric: "sitemap_coverage"
+      operator: "<"
+      threshold: 0.90
+    action:
+      type: "create_issue"
+      label: "seo-monitor"
+      assignee: "YiChen"
+      template: "sitemap 覆盖率 {value}% 低于 90% 阈值。sitemap 中 {sitemap_urls} URLs vs Strapi {strapi_articles} articles。排查 GSC 未索引原因。"
+    priority: P0
+
+# 策略自检频率
+schedule:
+  strategy_review: "0 8 * * 0"     # 每周日 8:00
+  metrics_window: 4                 # 分析过去 4 周数据
+  min_data_points: 7                # 至少 7 天数据才触发分析

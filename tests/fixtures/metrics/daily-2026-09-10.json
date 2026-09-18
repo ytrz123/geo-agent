@@ -1,0 +1,35 @@
+{
+  "date": "2026-09-10",
+  "checked_at": "2026-09-10T09:00:00+08:00",
+  "checks": {
+    "sitemap_coverage": {
+      "coverage": 1.082,
+      "sitemap_urls": 106,
+      "strapi_articles": 94,
+      "static_pages": 4,
+      "note": "coverage>100% because sitemap includes /en locale variants + /home; blog urls in sitemap: 94 == strapi total 94; no collapse"
+    },
+    "robots_txt": {
+      "bots_ok": [
+        "DoubaoBot",
+        "Bytespider",
+        "DeepSeekBot",
+        "Googlebot",
+        "Bingbot",
+        "GPTBot"
+      ],
+      "all_allow": true
+    },
+    "jsonld": {
+      "ld_json_occurrences": 8,
+      "Organization": true,
+      "WebSite": true
+    },
+    "http_status": {
+      "homepage": 200,
+      "api_articles": 200
+    }
+  },
+  "summary": "ALL PASS",
+  "notes": "Strapi /api/articles HTTP 200 (former #95 500 resolved). Sitemap 106 URLs / 94 blog = full dynamic routing, no collapse (post-#103 recovery holding). Continuity: gap days 2026-09-05/06 (weekend cron absences, not counted as anomaly)."
+}

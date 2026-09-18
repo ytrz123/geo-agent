@@ -1,0 +1,41 @@
+{
+  "date": "2026-08-30",
+  "checked_at": "2026-08-30T09:02:00+08:00",
+  "checks": {
+    "sitemap": {
+      "sitemap_urls": 4,
+      "static_pages": 4,
+      "blog_urls": 0,
+      "strapi_articles": null,
+      "coverage": null,
+      "status": "collapsed_recheck_confirmed",
+      "domain_in_sitemap": "www.santiy-ai.com",
+      "recheck": "second fetch minutes later identical: 4 static URLs, 0 blog routes"
+    },
+    "robots": {
+      "robots_txt": "ok",
+      "bots_present": [
+        "DoubaoBot",
+        "Bytespider",
+        "DeepSeekBot",
+        "GPTBot",
+        "Googlebot",
+        "Bingbot"
+      ],
+      "status": "ok"
+    },
+    "jsonld": {
+      "ld_json_blocks": 2,
+      "organization": true,
+      "website": true,
+      "status": "ok"
+    },
+    "homepage_http": 200,
+    "articles_api": {
+      "http_code": 500,
+      "status": "anomaly",
+      "detail": "Strapi GET /api/articles HTTP 500 InternalServerError, day 2 (also 2026-08-29). Tracked in issue #95."
+    }
+  },
+  "notes": "Sitemap collapse RECURRENCE: 92 URLs on 08-29 (built 08-28) -> 4 static-only URLs today, confirmed by immediate refetch. Issue #85 was closed 08-30 after 9 clean days; per policy a NEW seo-monitor issue created instead of reopen. Strapi articles_api 500 day 2 -> denominator unavailable, coverage NOT computed (do not treat as 0% in weekly aggregation). Metrics continuity gap: daily-2026-08-27.json missing (08-22 gap already documented in W35-2). 5 article-generate issues #97-#101 picked up for construction this run."
+}

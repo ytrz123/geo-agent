@@ -1,0 +1,69 @@
+{
+  "date": "2026-09-15",
+  "checked_at": "2026-09-15T09:00:00+08:00",
+  "sitemap_urls": 107,
+  "strapi_articles": 95,
+  "static_pages": 12,
+  "coverage": 1.0,
+  "sitemap_coverage": {
+    "coverage": 1.0,
+    "sitemap_urls": 107,
+    "strapi_articles": 95,
+    "static_pages": 12
+  },
+  "robots": {
+    "ok": true,
+    "bots_present": [
+      "DoubaoBot",
+      "Bytespider",
+      "DeepSeekBot",
+      "Googlebot",
+      "Bingbot",
+      "GPTBot"
+    ],
+    "missing": []
+  },
+  "robots_txt": "all 6 bots Allow: / present",
+  "jsonld": {
+    "ok": true,
+    "blocks": 8,
+    "types_present": [
+      "Organization",
+      "WebSite"
+    ]
+  },
+  "homepage_http": 200,
+  "articles_api_http": 200,
+  "checks": {
+    "sitemap_coverage": {
+      "coverage": 1.0,
+      "sitemap_urls": 107,
+      "strapi_articles": 95,
+      "static_pages": 12
+    },
+    "robots": {
+      "ok": true,
+      "bots_present": [
+        "DoubaoBot",
+        "Bytespider",
+        "DeepSeekBot",
+        "Googlebot",
+        "Bingbot",
+        "GPTBot"
+      ],
+      "missing": []
+    },
+    "jsonld": {
+      "ok": true,
+      "blocks": 8,
+      "types_present": [
+        "Organization",
+        "WebSite"
+      ]
+    },
+    "homepage_http": 200,
+    "articles_api_http": 200
+  },
+  "status": "all_pass",
+  "notes": "5/5 SEO checks pass. Sitemap healthy at 107 URLs (no collapse, 3rd consecutive day at 107). Static pages 12 (i18n /en variants), article URLs 107-12=95 = Strapi total exactly; true coverage 95/95=100%. robots 6 bots OK. JSON-LD Organization+WebSite OK (8 ld+json occurrences)."
+}

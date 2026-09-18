@@ -1,0 +1,34 @@
+{
+  "date": "2026-09-08",
+  "checked_at": "2026-09-08T09:00:00+08:00",
+  "checks": {
+    "sitemap_coverage": {
+      "coverage": 1.0816,
+      "sitemap_urls": 106,
+      "blog_urls": 94,
+      "static_urls": 12,
+      "strapi_articles": 94,
+      "note": "coverage>100% healthy: 12 non-blog URLs (en locale variants + home/products/solutions/blog/about). No collapse, dynamic routes intact. Strapi total from meta.pagination.total (pageSize=1 fetch, pagination trap avoided)."
+    },
+    "robots": {
+      "DoubaoBot": true,
+      "Bytespider": true,
+      "DeepSeekBot": true,
+      "GPTBot": true,
+      "Googlebot": true,
+      "Bingbot": true
+    },
+    "jsonld": {
+      "ldjson_occurrences": 8,
+      "Organization": true,
+      "WebSite": true
+    },
+    "homepage_http": 200,
+    "articles_api": {
+      "http_ok": true,
+      "total": 94
+    }
+  },
+  "status": "ALL_PASS",
+  "notes": "All 5 checks pass, no seo-monitor issue created. Sitemap stable at 106 URLs / Strapi 94 articles for 2 consecutive days (09-07, 09-08) - no collapse. Remote metrics gaps: 09-05, 09-06 (weekend), 08-27, 08-22 - gap days, not zero."
+}

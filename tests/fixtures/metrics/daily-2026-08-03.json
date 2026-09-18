@@ -1,0 +1,40 @@
+{
+  "date": "2026-08-03",
+  "checks": {
+    "sitemap_coverage": {
+      "coverage": 1.0,
+      "sitemap_urls": 57,
+      "strapi_articles": 53,
+      "pass": true
+    },
+    "robots_txt": {
+      "all_bots_present": true,
+      "bots_checked": [
+        "DoubaoBot",
+        "Bytespider",
+        "DeepSeekBot",
+        "GPTBot",
+        "Googlebot",
+        "Bingbot"
+      ],
+      "pass": true
+    },
+    "json_ld": {
+      "organization_present": true,
+      "website_present": true,
+      "pass": true
+    },
+    "homepage_status": {
+      "http_code": 200,
+      "ttfb_s": 0.06,
+      "pass": true
+    },
+    "articles_api": {
+      "http_code": 200,
+      "total": 53,
+      "pass": true
+    }
+  },
+  "all_pass": true,
+  "summary": "All 5 checks PASS"
+}

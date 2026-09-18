@@ -1,0 +1,79 @@
+{
+ "week": "2026-W34",
+ "analysis_date": "2026-08-16",
+ "data_window": "2026-07-19 ~ 2026-08-15",
+ "data_points": 28,
+ "min_required": 7,
+ "data_sufficient": true,
+ "rules_checked": 7,
+ "rules_triggered": 3,
+ "rules_skipped": 4,
+ "triggered_rules": [
+  {
+   "id": "low-citation-add-faq",
+   "priority": "P1",
+   "action": "continued",
+   "note": "AI引用率0%连续6周，FAQ强制要求已在W31模板落地，本次延续执行"
+  },
+  {
+   "id": "deepseek-preference-tech",
+   "priority": "P1",
+   "action": "capped",
+   "note": "industry 权重 1.50 已封顶 (W33第三次触发后按上限封顶)，本次不再+20%"
+  },
+  {
+   "id": "doubao-stop-crawling",
+   "priority": "P0",
+   "action": "commented_existing",
+   "note": "DoubaoBot连续6周零抓取，更新 #57"
+  }
+ ],
+ "rules_skipped_detail": [
+  {
+   "id": "zero-click-keywords",
+   "reason": "GSC 未接入"
+  },
+  {
+   "id": "crawl-delay-72h",
+   "reason": "无单篇文章级爬虫跟踪数据"
+  },
+  {
+   "id": "lcp-degraded",
+   "reason": "LCP 未采集"
+  },
+  {
+   "id": "sitemap-coverage-drop",
+   "reason": "覆盖率 ~100%, 未触发"
+  }
+ ],
+ "metrics_summary": {
+  "sitemap_coverage_avg": 1.0,
+  "strapi_articles": 78,
+  "sitemap_urls": 82,
+  "doubaobot_crawl_days_zero": "6+ weeks (W28-W33 all 0)",
+  "ai_citation_rate": 0.0,
+  "deepseek_citations": 0,
+  "gptbot_weekly": 878,
+  "googlebot_weekly": 440,
+  "bytespider_weekly": 120,
+  "deepseekbot_weekly": 23,
+  "lcp": "not_collected",
+  "gsc": "not_connected"
+ },
+ "strategy_adjustments": [],
+ "content_issues_created": [
+  79,
+  80,
+  81,
+  82,
+  83
+ ],
+ "review_issue": 84,
+ "issues_updated": [
+  57
+ ],
+ "issues_closed": [
+  78
+ ],
+ "notes": "industry 权重封顶 1.50，deepseek-preference-tech 连续第4次触发但不再调整；AI引用率0%持续6周，建议外链建设+AI平台sitemap提交"
+}

@@ -1,0 +1,23 @@
+{
+  "date": "2026-08-01",
+  "checked_at": "2026-08-01T09:00:00",
+  "sitemap_coverage": 1.9655,
+  "sitemap_urls": 57,
+  "strapi_articles": 25,
+  "robots_txt": {
+    "DoubaoBot": true,
+    "Bytespider": true,
+    "DeepSeekBot": true,
+    "Googlebot": true,
+    "Bingbot": true,
+    "GPTBot": true
+  },
+  "jsonld": {
+    "Organization": true,
+    "WebSite": true
+  },
+  "http_status": 200,
+  "api_status": 200,
+  "issues_created": 0,
+  "all_checks_passed": true
+}

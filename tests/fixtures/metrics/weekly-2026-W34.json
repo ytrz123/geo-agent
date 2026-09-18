@@ -1,0 +1,74 @@
+{
+  "platform": "doubao",
+  "week": "2026-W34",
+  "checked_at": "2026-08-17T10:05:47.349451",
+  "crawler_stats": {
+    "doubaobot": 0,
+    "bytespider": 120,
+    "deepseekbot": 23,
+    "gptbot": 1343,
+    "googlebot": 489,
+    "total_ai_bots": 1975,
+    "sample_size": "98776 lines (full docker logs)"
+  },
+  "citation_results": {
+    "total_queries": 7,
+    "cited_count": 0,
+    "mentioned_count": 0,
+    "citation_rate": 0.0,
+    "queries": [
+      {
+        "query": "公安基层智能助手 AI落地",
+        "category": "company",
+        "cited": false,
+        "mentioned": false
+      },
+      {
+        "query": "林务通智慧林业平台",
+        "category": "forestry",
+        "cited": false,
+        "mentioned": false
+      },
+      {
+        "query": "编译式智能体内网部署方案",
+        "category": "industry",
+        "cited": false,
+        "mentioned": false
+      },
+      {
+        "query": "RouterOS 跨境网络 SD-WAN 配置",
+        "category": "network-tech",
+        "cited": false,
+        "mentioned": false
+      },
+      {
+        "query": "惠州三体网络科技 AI Agent",
+        "category": "company",
+        "cited": false,
+        "mentioned": false
+      },
+      {
+        "query": "智慧林业大数据平台建设",
+        "category": "forestry",
+        "cited": false,
+        "mentioned": false
+      },
+      {
+        "query": "数字政府 AI智能体 信创",
+        "category": "government-ai",
+        "cited": false,
+        "mentioned": false
+      }
+    ]
+  },
+  "issues_updated": [
+    50,
+    52,
+    57
+  ],
+  "issues_closed": [
+    51
+  ],
+  "issues_new": [],
+  "article_generate_skip_reason": "#79-#83 already open (all 5 categories), waiting for content generation/publish"
+}

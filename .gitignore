@@ -1,0 +1,11 @@
+# 独立项目：不接任何 git remote，不上传仓库。
+# 但若将来要 init，下面这些必须永远不进版本控制。
+config.yml
+.venv/
+var/
+*.pyc
+__pycache__/
+.pytest_cache/
+*.db
+*.db-journal
+tests/fixtures/**/*.local.json

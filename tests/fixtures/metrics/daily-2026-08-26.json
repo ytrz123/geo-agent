@@ -1,0 +1,30 @@
+{
+  "date": "2026-08-26",
+  "sitemap": {
+    "url_count": 92,
+    "static_pages": 4,
+    "article_urls": 88,
+    "domain": "santiy-ai.com",
+    "all_on_new_domain": true
+  },
+  "strapi_articles_total": 88,
+  "sitemap_coverage": 1.0,
+  "robots": {
+    "DoubaoBot": true,
+    "Bytespider": true,
+    "DeepSeekBot": true,
+    "GPTBot": true,
+    "Googlebot": true,
+    "Bingbot": true,
+    "disallow_admin_api": true
+  },
+  "jsonld": {
+    "count": 2,
+    "organization": true,
+    "website": true
+  },
+  "http_status": 200,
+  "articles_api_status": 200,
+  "checks": "all normal",
+  "notes": "sitemap 92 URLs (4 static + 88 articles) = 100% coverage; 08-25 批次 #86-#90 共5篇已入库发布，sitemap 动态路由正常纳入新文章 (87->92); robots 全部6个AI爬虫 Allow:/; JSON-LD Organization+WebSite OK; HTTP 200; 轨迹 08-23 恢复后连续第4天健康 (08-23/24/25/26)"
+}

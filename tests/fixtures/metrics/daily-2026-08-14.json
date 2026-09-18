@@ -1,0 +1,25 @@
+{
+  "date": "2026-08-14",
+  "checks": {
+    "sitemap_urls": 82,
+    "strapi_articles_total": 78,
+    "sitemap_coverage": 1.0,
+    "robots_txt": {
+      "DoubaoBot": true,
+      "Bytespider": true,
+      "DeepSeekBot": true,
+      "GPTBot": true,
+      "Googlebot": true,
+      "Bingbot": true
+    },
+    "jsonld": {
+      "marker_count": 2,
+      "Organization": true,
+      "WebSite": true
+    },
+    "homepage_http": 200,
+    "articles_api_http": 200
+  },
+  "status": "all_normal",
+  "issues_created": 0
+}

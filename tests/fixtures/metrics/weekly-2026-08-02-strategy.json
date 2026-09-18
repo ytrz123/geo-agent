@@ -1,0 +1,56 @@
+{
+  "week": "2026-W32",
+  "analysis_date": "2026-08-02",
+  "data_points": 23,
+  "min_required": 7,
+  "data_sufficient": true,
+  "rules_checked": 7,
+  "rules_triggered": 3,
+  "rules_skipped": 4,
+  "triggered_rules": [
+    {
+      "id": "low-citation-add-faq",
+      "action": "continued",
+      "note": "Template already updated W31"
+    },
+    {
+      "id": "deepseek-preference-tech",
+      "action": "applied",
+      "note": "industry 1.20→1.40"
+    },
+    {
+      "id": "doubao-stop-crawling",
+      "action": "commented_existing",
+      "note": "Updated #57"
+    }
+  ],
+  "metrics_summary": {
+    "sitemap_coverage_avg": 1.0,
+    "doubaobot_crawl_days_zero": 23,
+    "ai_citation_rate": 0.0,
+    "deepseek_citations": 0,
+    "lcp": "not_collected",
+    "gsc": "not_connected"
+  },
+  "issues_created": [
+    66,
+    67,
+    68,
+    69,
+    70
+  ],
+  "strategy_adjustments": [
+    {
+      "file": "strategy/keywords.yaml",
+      "change": "industry 1.20→1.40"
+    }
+  ],
+  "content_issues_created": [
+    66,
+    67,
+    68,
+    69,
+    70
+  ],
+  "review_issue": 71
+}

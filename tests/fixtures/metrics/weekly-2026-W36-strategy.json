@@ -1,0 +1,169 @@
+{
+ "week": "2026-W36",
+ "analysis_date": "2026-08-30",
+ "data_window": "2026-08-03 ~ 2026-08-29",
+ "data_points": 24,
+ "min_required": 7,
+ "data_sufficient": true,
+ "data_gaps": [
+  "2026-08-22 (cron未推送)",
+  "2026-08-27 (cron未推送)",
+  "2026-08-29 coverage不可计算(Strapi 500, 非0%)"
+ ],
+ "rules_checked": 7,
+ "rules_triggered": 3,
+ "rules_skipped": 4,
+ "triggered_rules": [
+  {
+   "id": "low-citation-add-faq",
+   "priority": "P1",
+   "action": "continued",
+   "note": "AI引用率0%连续8周(W32-W34实测,W35工具失效不可判定)，FAQ强制要求已在W31模板落地，经API验证模板仍含data-faq/T3N7/时效性，延续执行"
+  },
+  {
+   "id": "deepseek-preference-tech",
+   "priority": "P1",
+   "action": "capped_with_max_field",
+   "note": "DeepSeek月引用0<2，连续第5次触发；industry权重已达max:1.50封顶(W35新增max字段生效)，本次不调整"
+  },
+  {
+   "id": "doubao-stop-crawling",
+   "priority": "P0",
+   "action": "commented_existing",
+   "note": "DoubaoBot连续8周零抓取，更新#57(含W32-W35爬虫数据表)，不新建工单"
+  }
+ ],
+ "rules_skipped_detail": [
+  {
+   "id": "zero-click-keywords",
+   "reason": "GSC 未接入"
+  },
+  {
+   "id": "crawl-delay-72h",
+   "reason": "无单篇文章级爬虫跟踪数据"
+  },
+  {
+   "id": "lcp-degraded",
+   "reason": "LCP 未采集"
+  },
+  {
+   "id": "sitemap-coverage-drop",
+   "reason": "4周均值92.1%≥90%未触发；塌缩(08-17/08-20)后连续9个自然日无复发，#85满足7天关闭条件已关闭"
+  }
+ ],
+ "metrics_summary": {
+  "sitemap_coverage_avg": 0.921,
+  "sitemap_coverage_avg_excl_collapse": 1.0,
+  "sitemap_collapse_events": [
+   "2026-08-17",
+   "2026-08-20"
+  ],
+  "last_collapse_date": "2026-08-20",
+  "stable_days_since_last_collapse": 9,
+  "sitemap_urls_latest": 92,
+  "strapi_articles_latest": 88,
+  "doubaobot_crawl_days_zero": "8+ weeks (W28-W35 all 0, 全量/大样本确认)",
+  "ai_citation_rate": 0.0,
+  "ai_citation_note": "W32-W34实测0.0%；W35因Doubao sessionid cookie过期不可判定(#92)，不计入0%但也不虚构数值",
+  "deepseek_citations": 0,
+  "crawler_weekly_trend": {
+   "W32": {
+    "doubaobot": 0,
+    "bytespider": 14,
+    "gptbot": 140,
+    "googlebot": 138,
+    "deepseekbot": 13
+   },
+   "W33": {
+    "doubaobot": 0,
+    "bytespider": 120,
+    "gptbot": 878,
+    "googlebot": 440,
+    "deepseekbot": 23
+   },
+   "W34": {
+    "doubaobot": 0,
+    "bytespider": 120,
+    "gptbot": 1343,
+    "googlebot": 489,
+    "deepseekbot": 23
+   },
+   "W35": {
+    "doubaobot": 0,
+    "bytespider": 678,
+    "gptbot": 1365,
+    "googlebot": 610,
+    "deepseekbot": 23
+   }
+  },
+  "lcp": "not_collected",
+  "gsc": "not_connected"
+ },
+ "new_anomalies": [
+  {
+   "id": "strapi-articles-500",
+   "issue": 95,
+   "priority": "P0",
+   "finding": "GET /api/articles HTTP 500 (08-29起持续, 4种查询变体均500, ~5s延迟)",
+   "impact": "发布管道受阻，#97-#101生成后待发布；前端缓存页面暂正常",
+   "action": "YiChen排查中(#95)"
+  }
+ ],
+ "strategy_adjustments": [],
+ "strategy_adjustments_note": "零文件变更: industry权重1.50封顶维持(max字段W35已落地)，FAQ模板延续执行，keywords.yaml与evolution-rules.yaml本周无修改",
+ "content_issues_created": [
+  97,
+  98,
+  99,
+  100,
+  101
+ ],
+ "content_batch_detail": [
+  {
+   "issue": 97,
+   "category": "industry",
+   "assignee": "YiChen",
+   "slug": "compiled-agent-intranet-deploy-20260830"
+  },
+  {
+   "issue": 98,
+   "category": "company",
+   "assignee": "Ruoxi",
+   "slug": "police-assistant-field-scenarios-20260830"
+  },
+  {
+   "issue": 99,
+   "category": "government-ai",
+   "assignee": "ShuHan",
+   "slug": "digital-government-agent-policy-20260830"
+  },
+  {
+   "issue": 100,
+   "category": "network-tech",
+   "assignee": "YiChen",
+   "slug": "sd-wan-cross-border-deploy-20260830"
+  },
+  {
+   "issue": 101,
+   "category": "forestry",
+   "assignee": "Ruoxi",
+   "slug": "forestry-bigdata-platform-20260830"
+  }
+ ],
+ "batch_guard": "上批次#86-#90全部closed(08-25发布)，满足新建守卫",
+ "review_issue": 102,
+ "issues_updated": [
+  57
+ ],
+ "issues_closed": [
+  85,
+  91
+ ],
+ "issues_still_open_external": [
+  92,
+  95,
+  50,
+  52
+ ],
+ "notes": "① 塌缩跟踪#85关闭(9天无塌缩>7天阈值)，根因未修复、复发将自动新建；② Strapi 500(#95)为本周P0阻塞项；③ 引用检测cookie(#92)待人工刷新；④ Bytespider W35激增至678值得关注"
+}

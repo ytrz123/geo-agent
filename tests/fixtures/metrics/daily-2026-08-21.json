@@ -1,0 +1,29 @@
+{
+ "date": "2026-08-21",
+ "sitemap_urls": 82,
+ "strapi_articles": 78,
+ "sitemap_coverage": {
+  "coverage": 1.0,
+  "sitemap_urls": 82,
+  "strapi_articles": 78,
+  "static_pages": 4
+},
+"robots": {
+ "DoubaoBot": "ok",
+ "Bytespider": "ok",
+ "DeepSeekBot": "ok",
+ "GPTBot": "ok",
+ "Googlebot": "ok",
+ "Bingbot": "ok"
+},
+"robots_ai_bots_count": 6,
+"jsonld": {
+ "application_ld_json_blocks": 2,
+ "Organization": true,
+ "WebSite": true
+},
+"http_status": 200,
+"articles_api_status": 200,
+"checks_all_ok": true,
+"notes": "SITEMAP RECOVERY: 2026-08-21 sitemap.xml back to 82 URLs (4 static + 78 articles, all santiy-ai.com) -> coverage 82/(78+4)=100%. Recovers from 08-20 collapse (4 URLs, 4.9%). robots.txt all 6 AI bots Allow:/. JSON-LD 2 blocks Organization+WebSite. HTTP 200. articles API 200. All checks pass, no seo-monitor issue created."
+}

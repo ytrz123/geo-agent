@@ -1,0 +1,30 @@
+{
+  "date": "2026-08-24",
+  "sitemap": {
+    "url_count": 87,
+    "static_pages": 4,
+    "article_urls": 83,
+    "domain": "santiy-ai.com",
+    "all_on_new_domain": true
+  },
+  "strapi_articles_total": 83,
+  "sitemap_coverage": 1.0,
+  "robots": {
+    "DoubaoBot": true,
+    "Bytespider": true,
+    "DeepSeekBot": true,
+    "GPTBot": true,
+    "Googlebot": true,
+    "Bingbot": true,
+    "disallow_admin_api": true
+  },
+  "jsonld": {
+    "count": 2,
+    "organization": true,
+    "website": true
+  },
+  "http_status": 200,
+  "articles_api_status": 200,
+  "checks": "all normal",
+  "notes": "sitemap 87 URLs (4 static + 83 articles) = 100% coverage; 08-22 daily missing (cron gap), trajectory 08-21 -> 08-23 -> 08-24; local clone corrupted (.git missing HEAD/config) -> recloned"
+}

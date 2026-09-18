@@ -1,0 +1,43 @@
+{
+  "date": "2026-08-31",
+  "checks": {
+    "sitemap_coverage": {
+      "coverage": null,
+      "sitemap_urls": 4,
+      "strapi_articles": null,
+      "static_pages": 4,
+      "blog_articles_in_sitemap": 0,
+      "sitemap_domain": "www.santiy-ai.com"
+    },
+    "robots": {
+      "status": "ok",
+      "bots_found": [
+        "DoubaoBot",
+        "Bytespider",
+        "DeepSeekBot",
+        "GPTBot",
+        "Googlebot",
+        "Bingbot"
+      ],
+      "all_allow": true
+    },
+    "jsonld": {
+      "status": "ok",
+      "ldjson_occurrences": 2,
+      "organization": true,
+      "website": true
+    },
+    "homepage_http": 200,
+    "strapi_api": {
+      "status": "error",
+      "http": 500,
+      "error": "InternalServerError"
+    }
+  },
+  "notes": [
+    "SITEMAP COLLAPSED day 2 (consecutive with 08-30): only 4 static URLs, 0 blog articles. Tracking #103 (do not create new issue).",
+    "Strapi /api/articles HTTP 500 day 3 (#95). Coverage=null — denominator unavailable, do NOT treat as 0% in weekly aggregation.",
+    "Consistent with hypothesis: sitemap rebuilt during Strapi outage loses dynamic routes. Rebuild sitemap after Strapi recovery.",
+    "Known missing daily files: 08-22, 08-27 (cron gaps, not incidents)."
+  ]
+}

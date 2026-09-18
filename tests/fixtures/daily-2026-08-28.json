@@ -1,0 +1,23 @@
+{
+  "name": "daily-2026-08-28.json",
+  "path": "metrics/daily-2026-08-28.json",
+  "sha": "9d26faaeba31e2983ab3b2b9e05c9a632e4618db",
+  "last_commit_sha": "c511093335a5d10e8f80b5d3508e27f651874898",
+  "last_committer_date": "2026-08-28T09:02:48+08:00",
+  "last_author_date": "2026-08-28T09:02:48+08:00",
+  "type": "file",
+  "size": 777,
+  "encoding": "base64",
+  "content": "ewogICJkYXRlIjogIjIwMjYtMDgtMjgiLAogICJjaGVja3MiOiB7CiAgICAic2l0ZW1hcF9jb3ZlcmFnZSI6IHsKICAgICAgImNvdmVyYWdlIjogMS4wLAogICAgICAic2l0ZW1hcF91cmxzIjogOTIsCiAgICAgICJzdHJhcGlfYXJ0aWNsZXMiOiA4OCwKICAgICAgInN0YXRpY19wYWdlcyI6IDQsCiAgICAgICJub3RlIjogInNhbnRpeS1haS5jb20gcmVicmFuZCBkb21haW47IGR5bmFtaWMgcm91dGVzIGludGFjdCIKICAgIH0sCiAgICAicm9ib3RzIjogewogICAgICAiYWxsX2JvdHNfb2siOiB0cnVlLAogICAgICAiYm90cyI6IFsKICAgICAgICAiRG91YmFvQm90IiwKICAgICAgICAiQnl0ZXNwaWRlciIsCiAgICAgICAgIkRlZXBTZWVrQm90IiwKICAgICAgICAiR1BUQm90IiwKICAgICAgICAiR29vZ2xlYm90IiwKICAgICAgICAiQmluZ2JvdCIKICAgICAgXQogICAgfSwKICAgICJqc29ubGQiOiB7CiAgICAgICJjb3VudCI6IDIsCiAgICAgICJvcmdhbml6YXRpb24iOiB0cnVlLAogICAgICAid2Vic2l0ZSI6IHRydWUKICAgIH0sCiAgICAiaG9tZXBhZ2VfaHR0cCI6IDIwMCwKICAgICJzdHJhcGlfaHR0cCI6IDIwMAogIH0sCiAgImFub21hbGllcyI6IFtdLAogICJub3RlcyI6ICJhbGwgNSBjaGVja3MgcGFzczsgY292ZXJhZ2UgOTIvKDg4KzQpPTEwMCU7IGRhdGEgZ2FwOiBkYWlseS0yMDI2LTA4LTIyLmpzb24gJiBkYWlseS0yMDI2LTA4LTI3Lmpzb24gbWlzc2luZyBpbiByZW1vdGUgbWV0cmljcy8gKGNyb24gZGlkIG5vdCBwdXNoIHRob3NlIGRheXMpIgp9",
+  "target": null,
+  "url": "http://192.168.31.162:3000/api/v1/repos/stkj/geo-seo/contents/metrics/daily-2026-08-28.json?ref=main",
+  "html_url": "http://192.168.31.162:3000/stkj/geo-seo/src/branch/main/metrics/daily-2026-08-28.json",
+  "git_url": "http://192.168.31.162:3000/api/v1/repos/stkj/geo-seo/git/blobs/9d26faaeba31e2983ab3b2b9e05c9a632e4618db",
+  "download_url": "http://192.168.31.162:3000/stkj/geo-seo/raw/branch/main/metrics/daily-2026-08-28.json",
+  "submodule_git_url": null,
+  "_links": {
+    "self": "http://192.168.31.162:3000/api/v1/repos/stkj/geo-seo/contents/metrics/daily-2026-08-28.json?ref=main",
+    "git": "http://192.168.31.162:3000/api/v1/repos/stkj/geo-seo/git/blobs/9d26faaeba31e2983ab3b2b9e05c9a632e4618db",
+    "html": "http://192.168.31.162:3000/stkj/geo-seo/src/branch/main/metrics/daily-2026-08-28.json"
+  }
+}

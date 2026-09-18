@@ -1,0 +1,31 @@
+{
+  "date": "2026-08-17",
+  "sitemap_urls": 4,
+  "strapi_articles": 78,
+  "sitemap_coverage": {
+    "coverage": 0.0488,
+    "sitemap_urls": 4,
+    "strapi_articles": 78,
+    "static_pages": 4
+  },
+  "robots": {
+    "DoubaoBot": "ok",
+    "Bytespider": "ok",
+    "DeepSeekBot": "ok",
+    "GPTBot": "ok",
+    "Googlebot": "ok",
+    "Bingbot": "ok"
+  },
+  "robots_ai_bots_count": 6,
+  "jsonld": {
+    "application_ld_json_blocks": 2,
+    "Organization": true,
+    "WebSite": true
+  },
+  "http_status": 200,
+  "articles_api_status": 200,
+  "blog_url_sample": "https://www.kamooc.cn/blog/network-tech-geo-20260809 -> HTTP 200",
+  "santiy_ai_direct_ssl": "exit 35 from cron host",
+  "checks_all_ok": false,
+  "notes": "ANOMALY: sitemap dropped from 82 URLs (2026-08-16) to 4 static URLs only; 78 Strapi articles missing from sitemap after rebrand to santiy-ai.com; coverage 4.88% < 90%; robots all 6 bots OK; JSON-LD OK"
+}

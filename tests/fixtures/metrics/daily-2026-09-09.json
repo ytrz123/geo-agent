@@ -1,0 +1,43 @@
+{
+  "date": "2026-09-09",
+  "checked_at": "2026-09-09T09:07:06+08:00",
+  "checks": {
+    "sitemap_coverage": {
+      "coverage": 1.082,
+      "sitemap_urls": 106,
+      "strapi_articles": 94,
+      "static_pages": 4,
+      "breakdown": {
+        "blog_urls": 94,
+        "static_locale_urls": 12,
+        "unique_locs": 106,
+        "kamooc_domain": 106,
+        "santiy_domain": 0
+      },
+      "note": "denominator formula (articles+4) understates: actual static/locale pages = 12 incl /en i18n routes; true coverage 100%"
+    },
+    "robots": {
+      "ok": true,
+      "bots_checked": [
+        "DoubaoBot",
+        "Bytespider",
+        "DeepSeekBot",
+        "GPTBot",
+        "Googlebot",
+        "Bingbot"
+      ],
+      "all_allow_root": true,
+      "sitemap_line_domain": "santiy-ai.com"
+    },
+    "jsonld": {
+      "ld_json_occurrences": 8,
+      "organization": true,
+      "website": true,
+      "method": "RSC-payload substring check (Next.js self.__next_f.push)"
+    },
+    "homepage_http": 200,
+    "strapi_api_http": 200
+  },
+  "status": "all_pass",
+  "notes": "All 5 checks pass, no new seo-monitor issue. | Sitemap healthy: 106 URLs = 94 blog (matches Strapi total 94) + 12 static/locale pages incl 6 /en i18n routes; formula coverage S/(A+4)=108% because denominator understates locale pages, true coverage 100%. | All sitemap URLs on kamooc.cn domain (0 santiy-ai.com); robots.txt Sitemap line still points to santiy-ai.com (rebrand leftover, informational). | Issue #103 (sitemap collapse tracker) closed today: collapse 08-30/08-31/09-01 at 4 URLs, recovered 09-02 at 105, then 8 consecutive natural days no collapse (6 confirmed + 2 weekend cron gaps). | Strapi /api/articles HTTP 200, total read from meta.pagination.total (pageSize=1 request, pagination trap avoided). | Remote metrics gaps: 09-05, 09-06 (weekend), 08-27; do not treat missing days as 0 in weekly aggregation. | No open article-generate issues: NO_ARTICLE_GENERATE_ISSUES, no construction this run."
+}

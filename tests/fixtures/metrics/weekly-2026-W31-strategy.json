@@ -1,0 +1,126 @@
+{
+  "week": "2026-W31",
+  "checked_at": "2026-07-27T10:16:44",
+  "platform": "doubao",
+  "crawler_stats": {
+    "log_lines_checked": 20000,
+    "doubaobot": 0,
+    "bytespider": 0,
+    "deepseekbot": 0,
+    "gptbot": 102,
+    "googlebot": 138,
+    "total_ai_bots": 240
+  },
+  "citation_check": {
+    "total_queries": 7,
+    "cited_count": 0,
+    "mentioned_count": 1,
+    "citation_rate": 0.0,
+    "mentioned_query": "惠州三体网络科技 AI Agent",
+    "results": [
+      {
+        "query": "公安基层智能助手 AI落地",
+        "category": "company",
+        "cited": false,
+        "mentioned": false
+      },
+      {
+        "query": "林务通智慧林业平台",
+        "category": "forestry",
+        "cited": false,
+        "mentioned": false
+      },
+      {
+        "query": "编译式智能体内网部署方案",
+        "category": "industry",
+        "cited": false,
+        "mentioned": false
+      },
+      {
+        "query": "RouterOS 跨境网络 SD-WAN 配置",
+        "category": "network-tech",
+        "cited": false,
+        "mentioned": false
+      },
+      {
+        "query": "惠州三体网络科技 AI Agent",
+        "category": "company",
+        "cited": false,
+        "mentioned": true
+      },
+      {
+        "query": "智慧林业大数据平台建设",
+        "category": "forestry",
+        "cited": false,
+        "mentioned": false
+      },
+      {
+        "query": "数字政府 AI智能体 信创",
+        "category": "government-ai",
+        "cited": false,
+        "mentioned": false
+      }
+    ]
+  },
+  "recommendations": [
+    {
+      "priority": "P0",
+      "issue": "#50",
+      "action": "comment_updated",
+      "type": "geo-check"
+    },
+    {
+      "priority": "P1",
+      "issue": "#51",
+      "action": "comment_updated",
+      "type": "geo-check"
+    },
+    {
+      "priority": "P1",
+      "issue": "#52",
+      "action": "comment_updated",
+      "type": "geo-check"
+    },
+    {
+      "priority": "P0",
+      "issue": "#57",
+      "action": "comment_updated",
+      "type": "geo-check"
+    },
+    {
+      "priority": "P2",
+      "issue": "#59",
+      "action": "skipped_exists",
+      "type": "article-generate",
+      "category": "industry"
+    },
+    {
+      "priority": "P2",
+      "issue": "#60",
+      "action": "skipped_exists",
+      "type": "article-generate",
+      "category": "company"
+    },
+    {
+      "priority": "P2",
+      "issue": "#61",
+      "action": "skipped_exists",
+      "type": "article-generate",
+      "category": "government-ai"
+    },
+    {
+      "priority": "P2",
+      "issue": "#62",
+      "action": "skipped_exists",
+      "type": "article-generate",
+      "category": "network-tech"
+    },
+    {
+      "priority": "P2",
+      "issue": "#63",
+      "action": "skipped_exists",
+      "type": "article-generate",
+      "category": "forestry"
+    }
+  ]
+}

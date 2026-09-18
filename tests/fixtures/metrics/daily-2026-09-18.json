@@ -1,0 +1,79 @@
+{
+  "date": "2026-09-18",
+  "checked_at": "2026-09-18T09:00:00+08:00",
+  "sitemap_urls": 212,
+  "strapi_articles": 101,
+  "static_pages": 12,
+  "coverage": 1.0,
+  "sitemap_coverage": {
+    "coverage": 1.0,
+    "sitemap_urls": 212,
+    "strapi_articles": 101,
+    "static_pages": 12
+  },
+  "robots": {
+    "ok": true,
+    "bots_present": [
+      "DoubaoBot",
+      "Bytespider",
+      "DeepSeekBot",
+      "Googlebot",
+      "Bingbot",
+      "GPTBot"
+    ],
+    "missing": []
+  },
+  "robots_txt": "all 6 bots Allow: / present",
+  "jsonld": {
+    "ok": true,
+    "blocks": 4,
+    "types_present": [
+      "Organization",
+      "WebSite",
+      "Product",
+      "FAQPage"
+    ]
+  },
+  "homepage_http": 200,
+  "articles_api_http": 200,
+  "checks": {
+    "sitemap_coverage": {
+      "coverage": 1.0,
+      "sitemap_urls": 212,
+      "strapi_articles": 101,
+      "static_pages": 12
+    },
+    "robots": {
+      "ok": true,
+      "bots_present": [
+        "DoubaoBot",
+        "Bytespider",
+        "DeepSeekBot",
+        "Googlebot",
+        "Bingbot",
+        "GPTBot"
+      ],
+      "missing": []
+    },
+    "jsonld": {
+      "ok": true,
+      "blocks": 4,
+      "types_present": [
+        "Organization",
+        "WebSite",
+        "Product",
+        "FAQPage"
+      ]
+    },
+    "homepage_http": {
+      "ok": true,
+      "http": 200
+    },
+    "articles_api_http": {
+      "ok": true,
+      "http": 200
+    }
+  },
+  "notes": "sitemap 212 URLs (=101 unique articles x2 locales + 12 static); Strapi total 101 -> real coverage 101/101 = 100%. Sitemap doubled vs 09-17 (112) because /en/blog/{slug} variants now included, and BOTH /blog/{slug} and /en/blog/{slug} return HTTP 200 for spot-checked slugs (clawrecorder-ai-workflow-20260903, e2e-test) -> default-locale route regression (#106) appears resolved as of today. 2 of 101 articles are missing one locale variant in sitemap (minor). daily continuity: 09-05/09-06 missing (cron gap, not zero). No anomalies -> no new seo-monitor issue.",
+  "anomalies": []
+}

@@ -1,0 +1,33 @@
+{
+  "date": "2026-09-11",
+  "checked_at": "2026-09-11T09:00:00+08:00",
+  "sitemap_coverage": {
+    "coverage": 1.0816,
+    "sitemap_urls": 106,
+    "blog_urls": 94,
+    "non_blog_urls": 12,
+    "strapi_articles": 94,
+    "static_pages_expected": 4,
+    "note": "coverage formula S/(A+4)=106/98=108.2%; blog coverage 94/94=100%; sitemap includes /en variants so total >100% is expected; no collapse"
+  },
+  "robots": {
+    "all_bots_allow": true,
+    "bots_present": [
+      "DoubaoBot",
+      "Bytespider",
+      "DeepSeekBot",
+      "GPTBot",
+      "Googlebot",
+      "Bingbot"
+    ]
+  },
+  "jsonld": {
+    "ld_json_blocks": 8,
+    "Organization": true,
+    "WebSite": true
+  },
+  "homepage_http": 200,
+  "strapi_api_http": 200,
+  "overall": "all_pass",
+  "notes": "Strapi /api/articles recovered from HTTP 500 (#95) — total=94 via meta.pagination.total (pageSize trap avoided). Metrics gap days 09-05/09-06 (weekend cron gaps, precedent 08-22/08-27): treat as natural-day gaps, not zero/anomaly. No issues created today."
+}
