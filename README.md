@@ -32,7 +32,7 @@ python cli.py seo-daily      # 只读试跑，不碰任何远端
 ## 2. 快速开始
 
 ```bash
-git clone https://github.com/liujia123-oss/geo-agent.git   # 私有仓库
+git clone https://github.com/ytrz123/geo-agent.git   # 私有仓库
 cd geo-agent
 
 python3 -m venv .venv
