@@ -20,6 +20,21 @@ except ImportError:  # pragma: no cover
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
+# 用户配置目录 —— 仓库外的私有配置放这里（多份 checkout 共用一份）。
+# 可用环境变量 GEOAGENT_HOME 覆盖。
+HOME_DIR = pathlib.Path(
+    os.environ.get("GEOAGENT_HOME") or (pathlib.Path.home() / ".config" / "geoagent")
+).expanduser()
+
+
+def _first_existing(cands) -> pathlib.Path:
+    """返回候选里第一个存在的路径；都不存在时返回第一个（便于报错指向默认位置）。"""
+    for c in cands:
+        if c.exists():
+            return c
+    return cands[0]
+
+
 DEFAULTS = {
     "shadow": {"read_only": True},
     # 官网发布默认关闭（用户 2026-09-18 要求）。改 false 也不能单独生效，仍需 read_only=false + --apply。
@@ -82,15 +97,24 @@ def _deep_merge(base: dict, over: dict) -> dict:
 
 
 def config_path(path=None) -> pathlib.Path:
+    """三级查找 config.yml：
+
+      ① 命令行 --config <path>
+      ② 环境变量 GEOAGENT_CONFIG
+      ③ 默认位置：项目内 ./config.yml，其次 ~/.config/geoagent/config.yml
+         （都没有时返回项目内路径，让报错指向最常见的位置）
+
+    ⚠️ config.yml 含凭据，永远不进版本控制（见 .gitignore）。它可以在仓库外。
+    """
     if path:
         return pathlib.Path(path).expanduser()
     env = os.environ.get("GEOAGENT_CONFIG")
     if env:
         return pathlib.Path(env).expanduser()
-    return ROOT / "config.yml"
+    return _first_existing([ROOT / "config.yml", HOME_DIR / "config.yml"])
 
 
-def load(path=None, site_file=None) -> dict:
+def load(path=None, site_file=None, knowledge_index=None) -> dict:
     """读 config.yml + site.yml 并合并。
 
     site.yml 的 quality / thresholds 会覆盖 config.yml 的同名段 —— 让站点档案成为
@@ -104,7 +128,8 @@ def load(path=None, site_file=None) -> dict:
         with open(p, "r", encoding="utf-8") as fh:
             data = yaml.safe_load(fh) or {}
     cfg = _deep_merge(DEFAULTS, data)
-    cfg["_meta"] = {"config_file": str(p), "exists": p.exists()}
+    cfg["_meta"] = {"config_file": str(p), "exists": p.exists(),
+                    "knowledge_index": str(knowledge_index) if knowledge_index else ""}
 
     # 延迟导入避免与 site 模块循环依赖
     from . import site as site_mod

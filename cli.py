@@ -5,7 +5,9 @@
     且命令行显式 --apply。任何一条不满足都只记录 would_*。
   * 官网发布另有一道独立硬锁：site.yml 的 publish.enabled（默认关闭，用户要求）。
   * --notify 独立于 --apply：允许在影子期真发企业微信群消息（通知不是写生产）。
-  * 站点与知识库通过 --site / config.yml 指定；换站点/换知识库不改代码。
+  * 站点与知识库通过 --site / --knowledge / config.yml 指定；换站点/换知识库不改代码。
+  * 三个配置文件都可以放在仓库外（命令行 → 环境变量 → 项目内 → ~/.config/geoagent/），
+    私有档案（site.yml / knowledge/index.yml / config.yml）不进版本控制。
 
     python cli.py list
     python cli.py check                       # 只做配置自检（不跑管道）
@@ -15,6 +17,7 @@
     python cli.py strategy --dry-run [--no-llm]
     python cli.py content --dry-run
     python cli.py seo-daily --site other-site.yml     # 换一份站点档案
+    python cli.py check --config ~/.config/geoagent/config.yml --site ~/.config/geoagent/site.yml
 """
 from __future__ import annotations
 
@@ -55,8 +58,14 @@ def _checkpointer(cfg, use_cp=True):
     return SqliteSaver(conn), conn
 
 
+def _load_cfg(args):
+    """统一加载配置：config.yml + site.yml + knowledge/index.yml（都可放仓库外）。"""
+    return cfgmod.load(args.config, getattr(args, "site", None),
+                       getattr(args, "knowledge", None))
+
+
 def _prepare(args):
-    cfg = cfgmod.load(args.config, getattr(args, "site", None))
+    cfg = _load_cfg(args)
     cfg["_allow_notify"] = bool(args.notify)
     paths = cfgmod.ensure_dirs(cfg)
     read_only = cfgmod.read_only(cfg, apply_flag=args.apply)
@@ -75,7 +84,7 @@ def _prepare(args):
 
 def cmd_check(args):
     """只做配置自检：验证 site.yml + knowledge/index.yml 是否自洽，不跑任何管道。"""
-    cfg = cfgmod.load(args.config, getattr(args, "site", None))
+    cfg = _load_cfg(args)
     site = cfg["_site"]
     print("config.yml : %s" % cfg["_meta"]["config_file"])
     print("site.yml   : %s%s" % (cfg["_meta"]["site_file"],
@@ -102,6 +111,7 @@ def cmd_check(args):
     repo.bootstrap()
     k = k_mod.load(cfg, repo, site)
     s = k.summary()
+    print("索引      : %s" % k_mod.index_path(cfg))
     print("来源      : %s（%s）" % (s["source"], s["root"]))
     print("条目      : %d %s" % (s["entries"], s["ids"]))
     print("硬口径    : %d 条" % s["rules"])
@@ -213,7 +223,8 @@ def cmd_list(args):
     print("\n默认 dry-run（只读）。写生产需 config.yml shadow.read_only=false + --apply；"
           "\n官网发布另需 site.yml 的 publish.enabled=true（默认关闭）。"
           "\n发企业微信群消息用 --notify（独立于写权限）。"
-          "\n换站点用 --site <file.yml>，换知识库改 knowledge/index.yml。")
+          "\n换站点用 --site <file.yml>，换知识库用 --knowledge <index.yml>。"
+          "\n配置查找顺序：命令行 → 环境变量(GEOAGENT_CONFIG/SITE/KNOWLEDGE) → 项目内 → ~/.config/geoagent/。")
 
 
 def main(argv=None):
@@ -221,8 +232,10 @@ def main(argv=None):
     sub = p.add_subparsers(dest="cmd")
     for key, (desc, _) in PIPELINES.items():
         sp = sub.add_parser(key, help=desc)
-        sp.add_argument("--config", default=None)
-        sp.add_argument("--site", default=None, help="站点档案（默认 site.yml）")
+        sp.add_argument("--config", default=None, help="运行配置（默认 ./config.yml → ~/.config/geoagent/config.yml）")
+        sp.add_argument("--site", default=None, help="站点档案（默认 ./site.yml → ~/.config/geoagent/site.yml）")
+        sp.add_argument("--knowledge", default=None,
+                        help="知识库索引（默认 ./knowledge/index.yml → ~/.config/geoagent/knowledge/index.yml）")
         sp.add_argument("--dry-run", action="store_true", default=True,
                         help="默认行为：只读影子跑")
         sp.add_argument("--apply", action="store_true",
@@ -238,6 +251,7 @@ def main(argv=None):
     cp = sub.add_parser("check", help="只做配置自检（站点/知识库/模型）")
     cp.add_argument("--config", default=None)
     cp.add_argument("--site", default=None)
+    cp.add_argument("--knowledge", default=None)
     cp.set_defaults(func=cmd_check)
 
     args = p.parse_args(argv)

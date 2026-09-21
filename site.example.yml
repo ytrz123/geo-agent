@@ -1,68 +1,74 @@
 # ============================================================================
-# 站点档案【通用模板】—— 换成你自己的站点照这个填
+# 站点档案【骨架示例】—— 一份虚构站点，只示范结构
 # ============================================================================
-# cp site.example.yml site.yml  然后逐项改。
-# 全文没有任何「具体站点」的痕迹，代码也不认识任何具体站点。
+# 真实档案请放到仓库外，不要提交：
+#     mkdir -p ~/.config/geoagent
+#     cp site.example.yml ~/.config/geoagent/site.yml
+#     $EDITOR ~/.config/geoagent/site.yml      # 换成你自己的站点
 #
-# 换站点三步：
-#   1. 改下面的 site / publish / routes
-#   2. 改 categories（你的内容分几类、谁负责）
-#   3. 改 knowledge/index.yml（你的知识库有哪些条目）
-# 代码一行都不用动。
+# 查找顺序：① --site <file.yml> ② GEOAGENT_SITE ③ ./site.yml
+#           ④ ~/.config/geoagent/site.yml
+#
+# site.yml 一次只加载一份 → 一次只服务一个站点。换站点用 --site 指定另一份档案。
+# ⚠️ 本文件不含任何凭据，只写环境变量名（token_env / cookie_env / webhook_env）。
+# ⚠️ 站点身份（域名、品牌、品类、负责人、水印）属于私有信息 —— 真实的 site.yml 不进仓库。
 # ============================================================================
 
 site:
-  name: 示例科技
-  base_url: https://www.example.com
-  extra_hosts:                      # 等价域名（含旧域名、备用域名）
+  name: ExampleBrand                            # 人类可读名，出现在日志/工单/通知里
+  base_url: https://www.example.com             # 抓取与验证的目标站
+  extra_hosts:                                  # 等价域名（多域名/双语站）
     - www.example.com
-    - example.com
-  brand_aliases:                    # AI 回答里出现哪些词算「提到我」
-    - 示例科技
-    - Example
+    - example.org
+  brand_aliases:                                # AI 回答里出现这些词算「提到本站品牌」
+    - ExampleBrand
+    - Example Inc
 
 publish:
-  cms: strapi                       # strapi | none（none = 只生成不发布）
+  cms: none                                     # strapi | none（none = 只生成不发布）
   base_url: https://www.example.com
-  token_env: STRAPI_TOKEN           # 环境变量名
-  content_type: articles
+  token_env: STRAPI_TOKEN                       # ← 环境变量名，不是值
+  content_type: articles                        # Strapi 集合名（/api/<content_type>）
   category_field: category
 
 routes:
-  article_prefix: /blog
-  locale_prefixes:
-    - ""                            # 默认语言（无前缀）
-    # - /en                         # 有多语言就加
-  static_paths:
+  article_prefix: /blog                         # 文章路由前缀（换路由只改这里）
+  locale_prefixes:                              # 语言前缀；第一个为默认语言；空串=无前缀
+    - ""
+    - /en
+  static_paths:                                 # 静态页清单（覆盖率分母的扣减项）
     - /
     - /products
     - /blog
     - /about
+    - /en
+    - /en/products
+    - /en/blog
+    - /en/about
 
-categories:                         # 增删随意，代码按配置生成校验规则
-  - id: product-news                # ← Strapi enum 里必须存在这个值
-    name: 产品动态
-    assignee: Alice
+categories:                                     # 品类 → 负责人 → 权重 → 文体
+  - id: industry
+    name: 行业观察
+    assignee: ExampleEditorA
+    weight: 1.50
+    style: 论证型+引用来源
+  - id: product
+    name: 产品应用
+    assignee: ExampleEditorB
     weight: 1.00
     style: 场景化+FAQ块+表格数据
-  - id: tech-deep-dive
-    name: 技术深度
-    assignee: Bob
-    weight: 1.20
-    style: 论证型+引用来源
 
 batch:
-  categories_per_week: 1
-  product_slot: false               # 没有"产品篇"就设 false
-  product_category: product-news
+  categories_per_week: 1                        # 每个品类每周几篇
+  product_slot: true                            # 是否额外产 1 篇「产品篇」
+  product_category: product                     # 产品篇挂哪个品类
 
 watermark:
-  default: 示例科技 智能引擎          # 通用品类的水印文案
-  min_occurrences: 2
-  overrides: []                     # 特定知识库用别的文案时才填，例如：
-  # overrides:
-  #   - when_knowledge: widget-x
-  #     text: 示例小部件 WidgetX
+  default: ExampleBrand Engine                  # 通用品类用这个水印文案
+  min_occurrences: 2                            # 正文至少出现几次
+  overrides:                                    # 特定知识条目换水印
+    - when_knowledge: example-widget
+      text: ExampleWidget
 
 quality:
   min_chars: 1500
@@ -74,16 +80,15 @@ quality:
   max_fix_rounds: 3
 
 citation_check:
-  engine: doubao                    # doubao | none
-  cookie_env: DOUBAO_COOKIE
+  engine: none                                  # doubao | none
+  cookie_env: EXAMPLE_COOKIE                    # ← 环境变量名（脚本里不硬编码 cookie）
   timeout_seconds: 900
-  queries: []                       # 你的目标客户会怎么问 AI？照这个写：
-  # queries:
-  #   - {q: "示例科技的产品怎么样", category: product-news}
-  #   - {q: "某行业 解决方案 选型", category: tech-deep-dive}
+  queries:                                      # 引用检测查询词（品类判定用）
+    - {q: "ExampleBrand 产品怎么样", category: product}
+    - {q: "ExampleBrand 行业方案选型", category: industry}
 
 workflow:
-  labels:
+  labels:                                       # Gitea 工作流标签（按站点命名）
     seo_monitor: seo-monitor
     geo_check: geo-check
     article_generate: article-generate
@@ -91,11 +96,11 @@ workflow:
     strategy_review: strategy-review
 
 people:
-  default_assignee: Alice
-  assignees: [Alice, Bob]
+  default_assignee: ExampleEditorA
+  assignees: [ExampleEditorA, ExampleEditorB]
 
 thresholds:
   sitemap_coverage_min: 0.90
   lcp_max_seconds: 4.0
   doubaobot_zero_streak_days: 3
-  static_pages_expected: 4
+  static_pages_expected: 8

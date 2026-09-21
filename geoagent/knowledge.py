@@ -10,6 +10,7 @@
 from __future__ import annotations
 
 import copy
+import os
 import pathlib
 
 try:
@@ -18,7 +19,8 @@ except ImportError:  # pragma: no cover
     yaml = None
 
 from . import obs
-from .config import ROOT, get as cfg_get
+from .config import HOME_DIR, ROOT, _first_existing
+from .config import get as cfg_get
 
 DEFAULTS = {
     "defaults": {"policy": "", "rules": []},
@@ -159,12 +161,33 @@ class Knowledge:
 
 
 # ------------------------------------------------------------------ 工厂
-def _index_from_local() -> tuple[dict, pathlib.Path] | tuple[None, None]:
-    p = ROOT / "knowledge" / "index.yml"
+def index_path(cfg: dict | None = None, explicit: str | os.PathLike | None = None) -> pathlib.Path:
+    """三级查找 knowledge/index.yml：
+
+      ① 命令行 --knowledge <index.yml>
+      ② 环境变量 GEOAGENT_KNOWLEDGE
+      ③ 默认位置：项目内 ./knowledge/index.yml，其次 ~/.config/geoagent/knowledge/index.yml
+
+    ⚠️ 真实知识库索引登记了产品事实与水印，属于私有档案，不进版本控制；
+    仓库里只放 knowledge/index.example.yml（虚构示例）。
+    """
+    if explicit:
+        return pathlib.Path(explicit).expanduser()
+    env = os.environ.get("GEOAGENT_KNOWLEDGE")
+    if env:
+        return pathlib.Path(env).expanduser()
+    if cfg and cfg.get("_meta", {}).get("knowledge_index"):
+        return pathlib.Path(cfg["_meta"]["knowledge_index"]).expanduser()
+    return _first_existing([ROOT / "knowledge" / "index.yml",
+                            HOME_DIR / "knowledge" / "index.yml"])
+
+
+def _index_from_local(cfg: dict | None = None) -> tuple[dict, pathlib.Path] | tuple[None, None]:
+    p = index_path(cfg)
     if not p.exists() or yaml is None:
         return None, None
     try:
-        return yaml.safe_load(p.read_text(encoding="utf-8")) or {}, ROOT / "knowledge"
+        return yaml.safe_load(p.read_text(encoding="utf-8")) or {}, p.parent
     except Exception as e:  # noqa: BLE001
         obs.log("knowledge_index_parse_failed", level="error", path=str(p), err=str(e))
         return None, None
@@ -182,15 +205,15 @@ def load(cfg: dict, repo=None, site: dict | None = None) -> Knowledge:
     """构造 Knowledge。
 
     ★ index.yml 与文件根目录是**分开找**的：
-      - index.yml：本地项目 knowledge/index.yml 优先（它是 geo-agent 的元数据），
-        其次仓库 knowledge/index.yml
+      - index.yml：三级查找（--knowledge → GEOAGENT_KNOWLEDGE → 项目内 knowledge/index.yml
+        → ~/.config/geoagent/knowledge/index.yml），其次仓库 knowledge/index.yml
       - 文件根目录：由 knowledge.source 决定
           repo  → 仓库 workspace 的 knowledge/（默认，与现状一致）
-          local → 本项目 knowledge/
-      这样可以「索引在项目内、事实文件在仓库里」，也支持全部本地化。
+          local → 索引所在目录
+      这样可以「索引在仓库外、事实文件在仓库里」，也支持全部本地化。
     """
     source = (cfg_get(cfg, "knowledge.source") or "").strip()
-    local_index, local_root = _index_from_local()
+    local_index, local_root = _index_from_local(cfg)
 
     remote_dir = _repo_knowledge_dir(repo)
     remote_index = None

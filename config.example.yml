@@ -1,5 +1,22 @@
-# geo-agent 配置样例 —— 复制成 config.yml 后填值
-# config.yml 含凭据，已在 .gitignore 中。容器/仓库里都不要带它。
+# ============================================================================
+# geo-agent 运行配置【骨架示例】—— 只示范结构，不含任何真实取值
+# ============================================================================
+# 用法：复制到仓库外，再填真实值：
+#     mkdir -p ~/.config/geoagent
+#     cp config.example.yml ~/.config/geoagent/config.yml
+#     $EDITOR ~/.config/geoagent/config.yml
+#
+# 查找顺序（命令行 → 环境变量 → 项目内 → 用户目录）：
+#     1) python cli.py <管道> --config /path/to/config.yml
+#     2) export GEOAGENT_CONFIG=/path/to/config.yml
+#     3) ./config.yml          （.gitignore 已忽略，别提交）
+#     4) ~/.config/geoagent/config.yml   （推荐：多个 checkout 共用一份）
+#
+# 本文件（示例）会进版本控制，因此：
+#     ✗ 不许出现真实域名 / IP / 主机名 / 用户名 / 模型名以外的内部端点
+#     ✗ 不许出现任何凭据（一律写 ${ENV_VAR}，由 geoagent 在运行时解析）
+#     ✓ 地址一律用 example.com / *.example.internal 这类占位符
+# ============================================================================
 
 shadow:
   # 影子期硬开关。true = 禁一切写操作（不 POST/PATCH/PUT、git 不 push）。
@@ -7,43 +24,43 @@ shadow:
   read_only: true
 
 publish:
-  # 🚫 官网发布开关（用户 2026-09-18 明确要求：不要发布到官网）。
-  # 默认 false = 代码级拒绝一切 Strapi 写入，即使 shadow.read_only=false + --apply 也不会发。
-  # 想重新开启发布，必须同时改这里 + shadow.read_only=false + 命令行 --apply（三重）。
+  # 官网发布开关。默认 false = 代码级拒绝一切 CMS 写入，
+  # 即使 shadow.read_only=false + --apply 也不会发。
+  # 要开启必须三重同时改：这里 true + shadow.read_only=false + 命令行 --apply。
   enabled: false
 
 paths:
-  workspace: var/workspaces/geo-seo      # git 工作副本（影子期只读用）
-  logs: var/logs                         # JSONL 结构化日志 + trace
-  state_db: var/state/geoagent.db        # LangGraph checkpointer（断点续跑）
+  workspace: var/workspaces/site          # git 工作副本（影子期只读用）
+  logs: var/logs                          # JSONL 结构化日志 + trace
+  state_db: var/state/geoagent.db         # LangGraph checkpointer（断点续跑）
 
 site:
-  base_url: https://www.kamooc.cn
-  # i18n 上线后静态页 12 个（首页/products/blog/about × zh+en）。仅作上报字段，不参与覆盖率分母。
-  static_pages: 12
+  # 站点地址以 site.yml 为准；这里仅保留兼容字段
+  base_url: ""                            # 例如 https://www.example.com
+  static_pages: 0                         # 静态页数量，仅作上报字段
 
 gitea:
-  base_url: http://192.168.31.162:3000
-  repo: stkj/geo-seo
-  auth_mode: basic          # basic | token
-  user: liujia
-  password: admin123
-  token: ""                 # auth_mode=token 时使用
+  base_url: ""                            # 占位示例：http://gitea.example.internal:3000
+  repo: ""                                # 占位示例：your-org/your-repo
+  auth_mode: basic                        # basic | token
+  user: ${GITEA_USER}                     # ← 环境变量占位，不要写真实用户名
+  password: ${GITEA_PASSWORD}             # ← 环境变量占位，不要写真实口令
+  token: ${GITEA_TOKEN}                   # auth_mode=token 时使用
 
 strapi:
-  base_url: https://www.kamooc.cn
-  token: ""                 # 需 Full access；只读影子跑可不填
+  base_url: ""                            # 占位示例：https://www.example.com
+  token: ${STRAPI_TOKEN}                  # 需 Full access；只读影子跑可不填
 
 llm:
-  # 走现有 litellm 统一出口；必须是 chat_completions 协议（anthropic 协议打 glm 必 404）
-  base_url: https://36.151.148.136/v1
-  api_key: ""
-  model: glm-5.3-flash-cp
+  # 统一 LLM 出口；必须是 chat_completions 协议（anthropic 协议打某些代理会 404）
+  base_url: ""                            # 占位示例：https://llm.example.internal/v1
+  api_key: ${LLM_API_KEY}
+  model: ""                               # 由使用方填写自己的模型名
   temperature: 0
   timeout: 120
 
 wecom:
-  webhook_url: ""           # 群机器人 key 必须人工创建；留空则 notify 节点只记录不发送
+  webhook_url: ${WECOM_WEBHOOK}           # 群机器人 key 必须人工创建；留空则只记录不发送
   mention_all_on_alarm: false
   max_chars: 1500
   retry: 3
@@ -52,7 +69,7 @@ wecom:
 notify:
   # 只推值得推的：新建工单 / P0-P1 / 发布成败 / 塌缩复发
   push_new_issues: true
-  push_issue_updates: false        # 老工单日常评论更新默认不推，防刷屏
+  push_issue_updates: false               # 老工单日常评论更新默认不推，防刷屏
   push_publish: true
   quiet_hours: ["23:30-07:00"]
   quiet_exempt_alarm: false
@@ -67,4 +84,4 @@ quality:
   min_h2: 4
   min_faq: 4
   min_tables: 2
-  max_fix_rounds: 3              # 管道 E 质检回炉上限
+  max_fix_rounds: 3                       # 管道 E 质检回炉上限

@@ -14,9 +14,17 @@ import glob
 import json
 import pathlib
 import subprocess
+import sys
 import urllib.request
 
-ROOT = pathlib.Path("/Users/mac/Documents/geo-agent")
+ROOT = pathlib.Path(__file__).resolve().parent
+sys.path.insert(0, str(ROOT))
+
+from geoagent import config as cfgmod  # noqa: E402
+from geoagent import site as site_mod  # noqa: E402
+
+CFG = cfgmod.load()
+SITE = CFG["_site"]
 
 WRITE_EVENTS_OK = {"strapi_write_skipped", "gitea_write_skipped", "repo_commit_skipped",
                    "repo_push_skipped", "wecom_send_skipped", "wecom_not_configured",
@@ -55,7 +63,7 @@ def main():
     print("    成功写事件（必须为 0）: %d %s" % (len(bad_hits), bad_hits[:3]))
 
     # ---- 2. workspace git 状态
-    ws = ROOT / "var" / "workspaces" / "geo-seo"
+    ws = cfgmod.abspath(CFG, "paths.workspace")
     print("\n[2] workspace git 状态 (%s)" % ws)
     if (ws / ".git").exists():
         def git(*a):
@@ -74,8 +82,12 @@ def main():
     print("\n[3] 官网 Strapi 只读核对（今天是否有新增）")
     import datetime as dt
     today = dt.date.today().isoformat()
-    url = ("https://www.kamooc.cn/api/articles?pagination%5BpageSize%5D=50"
-           "&sort=publishedAt:desc")
+    # 官网地址与集合名都来自 site.yml —— 脚本里不写死任何站点
+    _site_base = (site_mod.get(SITE, "publish.base_url")
+                  or site_mod.get(SITE, "site.base_url") or "").rstrip("/")
+    _ctype = site_mod.get(SITE, "publish.content_type", "articles")
+    url = ("%s/api/%s?pagination%%5BpageSize%%5D=50&sort=publishedAt:desc"
+           % (_site_base, _ctype))
     try:
         req = urllib.request.Request(url, headers={"User-Agent": "geo-agent-audit/1.0"})
         with urllib.request.urlopen(req, timeout=30) as r:

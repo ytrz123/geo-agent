@@ -1,6 +1,16 @@
-# 独立项目：不接任何 git remote，不上传仓库。
-# 但若将来要 init，下面这些必须永远不进版本控制。
+# 私有档案与凭据 —— 一律不进版本控制
 config.yml
+config.local.yml
+site.yml
+knowledge/index.yml
+words.txt
+.env
+.env.*
+
+# 私有工作笔记（本机保留，不进仓库）
+通用化改造方案.md
+
+# 运行产物
 .venv/
 var/
 *.pyc

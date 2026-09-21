@@ -21,7 +21,7 @@ try:
 except ImportError:  # pragma: no cover
     yaml = None
 
-from .config import ROOT
+from .config import HOME_DIR, ROOT, _first_existing
 
 # 最小可用默认：一个没有任何品类、没有水印的"空站点"。
 # 目的不是能用，而是「缺配置时给出清晰错误」而不是 AttributeError。
@@ -58,6 +58,14 @@ def _deep_merge(base, over):
 
 
 def site_path(cfg: dict | None = None, explicit: str | os.PathLike | None = None) -> pathlib.Path:
+    """三级查找 site.yml：
+
+      ① 命令行 --site <file.yml>
+      ② 环境变量 GEOAGENT_SITE
+      ③ 默认位置：项目内 ./site.yml，其次 ~/.config/geoagent/site.yml
+
+    ⚠️ site.yml 是站点身份（域名/品牌/品类/人名），属于私有档案，不进版本控制。
+    """
     if explicit:
         return pathlib.Path(explicit).expanduser()
     env = os.environ.get("GEOAGENT_SITE")
@@ -65,7 +73,7 @@ def site_path(cfg: dict | None = None, explicit: str | os.PathLike | None = None
         return pathlib.Path(env).expanduser()
     if cfg and cfg.get("_meta", {}).get("site_file"):
         return pathlib.Path(cfg["_meta"]["site_file"]).expanduser()
-    return ROOT / "site.yml"
+    return _first_existing([ROOT / "site.yml", HOME_DIR / "site.yml"])
 
 
 def load_site(cfg: dict | None = None, explicit: str | os.PathLike | None = None) -> dict:

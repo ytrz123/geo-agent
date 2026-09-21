@@ -21,6 +21,7 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 
+from geoagent import config as cfgmod  # noqa: E402
 from geoagent.metrics import normalize as nz  # noqa: E402
 
 NUMERIC_KEYS = ["sitemap_urls", "unique_article_slugs", "strapi_articles", "static_pages"]
@@ -40,7 +41,7 @@ def _load(p: pathlib.Path):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--date", default=dt.date.today().isoformat())
-    ap.add_argument("--workspace", default=str(ROOT / "var" / "workspaces" / "geo-seo"))
+    ap.add_argument("--workspace", default=str(cfgmod.abspath(cfgmod.load(), "paths.workspace")))
     args = ap.parse_args()
 
     ours_p = ROOT / "var" / "out" / "metrics" / ("daily-%s.json" % args.date)

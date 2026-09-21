@@ -9,10 +9,23 @@
 import base64
 import json
 import pathlib
+import sys
 import urllib.request
 
-BASE = "http://192.168.31.162:3000/api/v1/repos/stkj/geo-seo"
-CREDS = base64.b64encode(b"liujia:admin123").decode()
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+
+from geoagent import config as cfgmod  # noqa: E402
+
+# 地址与凭据一律从 config.yml（或 GEOAGENT_CONFIG 指定的文件）读 —— 脚本里不留任何真实值
+CFG = cfgmod.load()
+_BASE = (cfgmod.get(CFG, "gitea.base_url") or "").rstrip("/")
+_REPO = cfgmod.get(CFG, "gitea.repo") or ""
+_USER = CFG["gitea"].get("user") or ""
+if not (_BASE and _REPO and _USER):
+    sys.exit("请先在 config.yml 里配好 gitea.base_url / gitea.repo / user"
+             "（或设 GITEA_USER / GITEA_PASSWORD 环境变量）")
+BASE = "%s/api/v1/repos/%s" % (_BASE, _REPO)
+CREDS = base64.b64encode(("%s:%s" % (_USER, CFG["gitea"].get("password") or "")).encode()).decode()
 OUT = pathlib.Path(__file__).resolve().parent / "tests" / "fixtures" / "metrics"
 OUT.mkdir(parents=True, exist_ok=True)
 

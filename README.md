@@ -38,8 +38,11 @@ cd geo-agent
 python3 -m venv .venv
 .venv/bin/pip install --index-url https://pypi.org/simple/ -r requirements.txt
 
-cp config.example.yml config.yml    # 运行配置（含凭据 → 已 .gitignore）
-cp site.example.yml   site.yml      # 站点档案（照模板填你的站点）
+# 私有配置放仓库外（推荐）：站点档案 + 运行配置 + 知识库索引
+mkdir -p ~/.config/geoagent/knowledge/products
+cp site.example.yml   ~/.config/geoagent/site.yml          # 照模板填你的站点
+cp config.example.yml ~/.config/geoagent/config.yml        # 填地址，凭据写 ${ENV}
+cp knowledge/index.example.yml ~/.config/geoagent/knowledge/index.yml
 
 .venv/bin/python cli.py check       # ★ 配置自检：站点 / 知识库 / 动态模型
 .venv/bin/python cli.py list        # 列出 5 条管道
@@ -98,18 +101,34 @@ E content     bootstrap → pick_issue ─┬→ write_one ─┐
               write_one 内部：撰写 → 质检 → FAIL 回炉（≤ quality.max_fix_rounds）
 ```
 
-公共参数：`--config <file>` `--site <file.yml>` `--dry-run`（默认）`--apply` `--notify`
-`--no-checkpoint` `--no-llm` `--with-citation`（管道 B 真跑引用检测，Playwright，2–3 分钟）。
+公共参数：`--config <file>` `--site <file.yml>` `--knowledge <index.yml>` `--dry-run`（默认）
+`--apply` `--notify` `--no-checkpoint` `--no-llm` `--with-citation`（管道 B 真跑引用检测，Playwright，2–3 分钟）。
 
 ---
 
 ## 4. 配置
 
-| 文件 | 作用 | 含凭据 | 可进仓库 |
-|---|---|---|---|
-| `config.yml` | 运行环境：路径、开关、客户端地址、阈值 | 是（可改走环境变量） | ❌ 已 `.gitignore` |
-| `site.yml` | ★ 站点档案：域名、品牌别名、水印、路由、品类、人员、查询词 | 否 | ✅ |
-| `knowledge/index.yml` | ★ 知识库清单：事实来源登记 + 硬口径 | 否 | ✅ |
+三份配置各有归属，**都可以放在仓库外**（查找顺序：命令行 → 环境变量 → 项目内 → `~/.config/geoagent/`）：
+
+| 文件 | 作用 | 含凭据 | 含站点身份 | 可进仓库 |
+|---|---|---|---|---|
+| `config.yml` | 运行环境：路径、开关、客户端地址、模型 | 是（一律写 `${ENV}`） | 部分 | ❌ |
+| `site.yml` | ★ 站点档案：域名、品牌别名、水印、路由、品类、人员、查询词 | 否 | 是 | ❌ |
+| `knowledge/index.yml` | ★ 知识库清单：事实来源登记 + 硬口径 | 否 | 是 | ❌ |
+
+仓库里只放**零真实取值的骨架**：`config.example.yml` / `site.example.yml` / `knowledge/index.example.yml`
+（地址写 `example.com` 这类占位符，凭据写 `${ENV}`，站点与知识库都是虚构示例）。
+
+**查找顺序**（三个文件都一样）：
+
+```bash
+--site /path/to/site.yml                       # ① 命令行
+export GEOAGENT_SITE=/path/to/site.yml         # ② 环境变量
+./site.yml                                     # ③ 项目内（.gitignore 已忽略）
+~/.config/geoagent/site.yml                    # ④ 用户目录（推荐：多个 checkout 共用一份）
+```
+
+用户目录可用 `GEOAGENT_HOME` 改（默认 `~/.config/geoagent`）。
 
 **换站点三步**：改 `site.yml` 的 `site`/`publish`/`routes` → 改 `categories` → 改 `knowledge/index.yml`。
 代码一行不用动，细节见 `使用说明.md §3`。
@@ -128,6 +147,8 @@ E content     bootstrap → pick_issue ─┬→ write_one ─┐
 | `WECOM_WEBHOOK` | 企业微信群机器人 webhook |
 | `GEOAGENT_CONFIG` | 覆盖默认的 `config.yml` 路径 |
 | `GEOAGENT_SITE` | 覆盖默认的 `site.yml` 路径 |
+| `GEOAGENT_KNOWLEDGE` | 覆盖默认的 `knowledge/index.yml` 路径 |
+| `GEOAGENT_HOME` | 私有配置目录，默认 `~/.config/geoagent` |
 
 变量名本身也可在 `site.yml` 里改（`publish.token_env` / `citation_check.cookie_env` / `wecom.webhook_env`）。
 
@@ -167,8 +188,10 @@ E content     bootstrap → pick_issue ─┬→ write_one ─┐
 
 ```
 cli.py                    入口（5 管道 + list + check）
-site.yml                  站点档案（唯一认识具体站点的地方）
-knowledge/index.yml       知识库清单
+site.example.yml          站点档案【虚构骨架】——真实 site.yml 放仓库外
+config.example.yml        运行配置【占位骨架】——凭据写 ${ENV}
+knowledge/index.example.yml  知识库清单【虚构骨架】
+~/.config/geoagent/       私有配置默认落地点（site.yml / config.yml / knowledge/index.yml）
 
 geoagent/
   config.py               运行配置 + 凭据解析（${ENV} / 环境变量 / 字面值）
@@ -184,7 +207,7 @@ geoagent/
   clients/                gitea / strapi(+NoopCms) / wecom
   tools/                  质检、引用检测、覆盖率等脚本（阈值与品牌已参数化）
 
-tests/                    63 项；fixtures/site.test.yml 是虚构站点
+tests/                    63 项；fixtures/site.test.yml / site.other.yml 都是虚构站点
 var/                      运行产物（logs / out / workspaces / state，均不入库）
 audit_hardcode.sh         扫描非通用硬编码（守住「代码里没有站点痕迹」）
 tools_*.py                运维辅助脚本（只读审计 / 产物对比 / fixture 采集）
@@ -208,7 +231,9 @@ bash audit_hardcode.sh                 # 扫非通用硬编码
 | 引用检测走到 `cookie_invalid` | `DOUBAO_COOKIE` 过期（2–7 天），刷新后重跑；不会虚构数据 |
 | 节点报错但进程没退出 | 正常设计：错误在 `state["errors"]` + trace 末尾，终端报告里有 |
 | 断点续跑状态异常 | 删 `var/state/geoagent.db`，或用 `--no-checkpoint` 跑无状态 |
-| 想接定时调度 | 直接 cron 指向 `cli.py <管道>`，默认只读，加 `--apply` 才写 |
+| 想接定时调度 | 直接 cron 指向 `cli.py <管道>`，默认只读，加 `--apply` 才写。
+| cron 里找不到站点档案 | cron 的环境没有你的 shell 变量 → 写全 `--site /abs/path/site.yml`，或设 `GEOAGENT_SITE` |
+| `check` 提示 `site.yml ← 不存在！` | 私有档案没放到查找路径上：拷到 `~/.config/geoagent/` 或用 `--site` 指过去 |
 
 ---
 

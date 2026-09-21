@@ -1,0 +1,57 @@
+# ============================================================================
+# 知识库索引【骨架示例】—— 虚构登记，只示范结构
+# ============================================================================
+# 代码不假设目录结构，只按这个文件找文件。换知识库 = 换索引 + 换目录。
+# 生成代理只允许引用此处登记的条目，不得凭空编写产品参数。
+#
+# 真实索引请放到仓库外，不要提交：
+#     mkdir -p ~/.config/geoagent/knowledge/products
+#     cp knowledge/index.example.yml ~/.config/geoagent/knowledge/index.yml
+#
+# 查找顺序：① --knowledge <index.yml> ② GEOAGENT_KNOWLEDGE
+#           ③ ./knowledge/index.yml ④ ~/.config/geoagent/knowledge/index.yml
+# ⚠️ 真实索引登记了产品事实与水印（=站点身份），属于私有档案，不进版本控制。
+# ============================================================================
+
+defaults:
+  policy: 事实必须来自登记文件，不得凭空编写参数/规格/名单
+  rules:
+    - 不写具体价格
+    - 竞品对比只做功能维度、中性措辞、不点名不贬损
+    - 知识卡与已发布文章冲突时，以知识卡为准并回改文章
+
+# ---------------------------------------------------------------------------
+entries:
+  - id: example-widget                     # ★ 唯一标识；site.yml 的 watermark.overrides 按它匹配
+    title: 示例小部件 ExampleWidget
+    files:
+      facts: products/example-widget.md    # 相对索引所在目录的路径
+      faqs: products/example-widget-faqs.md
+    applies_to:
+      categories: [product]                # 适用于哪些品类
+      is_product_slot: true                # 是否占用每周「产品篇」名额
+    watermark: ExampleWidget               # 本条目的水印（也会进 site.yml 的水印候选集合）
+    source: 示例产品说明.docx
+    extracted_at: 2026-01-01
+    version: "1.0"
+    # 产品篇角度轮换表（每周换一个角度，防止同题重复）
+    angles:
+      - 产品总览
+      - 典型使用场景
+      - 与传统方案对比
+      - 部署与运维
+      - 数据安全与合规
+
+# ---------------------------------------------------------------------------
+# 下面是「品类事实卡」的预留位置。文件不存在时，该品类文章会明确走
+# 「无登记事实来源 → 不得编造」分支，而不是让模型自由发挥。
+#
+#  - id: industry-facts
+#    title: 行业技术事实
+#    files:
+#      facts: categories/industry.md
+#    applies_to:
+#      categories: [industry]
+#    source: 内部技术白皮书
+#    extracted_at: 2026-01-01
+#    version: "1.0"

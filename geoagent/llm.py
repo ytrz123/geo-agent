@@ -1,6 +1,6 @@
 """LLM 工厂 + 结构化输出（含失败降级与「原生结构化不可用」的自动回退）。
 
-模型走现有 litellm 统一出口（36.151.148.136），**必须** chat_completions 协议：
+模型走统一的 litellm 出口（地址在 config.yml 的 `llm.base_url`，不入库），**必须** chat_completions 协议：
 litellm 的 anthropic 协议(/v1/messages)转发 glm 会 404。
 
 实测（2026-09-18）：这个 glm 端点经 litellm 不认 function calling / json_schema ——

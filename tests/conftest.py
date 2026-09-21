@@ -78,8 +78,11 @@ def metrics_fixtures():
 @pytest.fixture
 def real_article():
     """一篇真实已发布文章（质检门禁本来就能过）—— 管道测试用真数据而不是手搓。"""
-    ws = ROOT / "var" / "workspaces" / "geo-seo" / "output" / "articles"
-    if not ws.exists():
+    # 不写死具体仓库目录名：哪个 workspace 有文章就用哪个
+    ws = next((d / "output" / "articles"
+               for d in sorted((ROOT / "var" / "workspaces").glob("*"))
+               if (d / "output" / "articles").exists()), None)
+    if ws is None or not ws.exists():
         pytest.skip("workspace 未 clone（先跑一次 cli.py seo-daily）")
     cands = sorted(ws.glob("*20260913*.md"))
     if not cands:

@@ -94,19 +94,23 @@ def test_schemas_module_is_site_free():
 
 
 def test_two_different_sites_drive_different_models(tmp_path):
-    """换站点 = 改配置：两份不同的 site.yml 必须产出不同的校验模型。"""
+    """换站点 = 改配置：两份不同的 site.yml 必须产出不同的校验模型。
+
+    两份档案都是**虚构站点**（tests/fixtures 下）—— 真实 site.yml 不进仓库，
+    所以测试不依赖它，换台机器 clone 下来也能跑。
+    """
     from geoagent import config as cfgmod
     from geoagent import schema_loader
 
     a = cfgmod.load(tmp_path / "none.yml", ROOT / "tests" / "fixtures" / "site.test.yml")
-    b = cfgmod.load(tmp_path / "none.yml", ROOT / "site.yml")
+    b = cfgmod.load(tmp_path / "none.yml", ROOT / "tests" / "fixtures" / "site.other.yml")
 
     ma = schema_loader.build(a["_site"])
     mb = schema_loader.build(b["_site"])
 
     assert ma["categories"] != mb["categories"]          # 品类不同
     assert ma["assignees"] != mb["assignees"]            # 人员不同
-    assert "Alice" in ma["assignees"] and "YiChen" in mb["assignees"]
+    assert "Alice" in ma["assignees"] and "Carol" in mb["assignees"]
 
     # 用 A 站点的模型校验 B 站点的数据应当失败（证明约束真的按配置生成）
     import pydantic

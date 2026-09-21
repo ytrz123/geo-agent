@@ -4,8 +4,8 @@
   * 只 `git add <本次文件>` —— 绝不 `git add .`（历史事故：把共享 clone 的非 metrics 跟踪文件
     标记为 D 从磁盘消失，破坏策略 Cron 的本地读取）。
   * push 只在非只读模式执行；影子期只 fetch/reset 读最新，不写远端。
-  * 本项目的 workspace 是自己的副本（var/workspaces/geo-seo），不碰 /tmp/geo-seo-metrics，
-    也不碰 ~/Documents/liujia/geo-seo（那是人工用的 clone）。
+  * 本项目的 workspace 是自己的副本（路径由 config.yml 的 paths.workspace 决定），
+    不碰任何别人的共享 clone（那些是人工维护的目录）。
 """
 from __future__ import annotations
 

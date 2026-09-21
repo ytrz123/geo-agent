@@ -1,0 +1,83 @@
+# 第二份【虚构站点】—— 用来验证「换站点 = 只改配置」。
+# 刻意与 site.test.yml 的品类/人员/路由/水印全部不同：
+# 两份档案必须产出不同的校验模型，否则说明还有站点值焊在代码里。
+site:
+  name: 另一个示例公司
+  base_url: https://other.example.net
+  extra_hosts:
+    - other.example.net
+  brand_aliases:
+    - 另一个示例公司
+    - OtherExample
+
+publish:
+  cms: none
+  base_url: https://other.example.net
+  token_env: OTHER_STRAPI_TOKEN
+  content_type: posts
+  category_field: section
+
+routes:
+  article_prefix: /posts            # 与 site.test.yml 的 /articles 不同
+  locale_prefixes:
+    - ""
+    - /zh
+  static_paths:
+    - /
+    - /zh
+
+categories:
+  - id: market-brief
+    name: 市场简报
+    assignee: Carol
+    weight: 1.30
+    style: 数据型
+  - id: policy-watch
+    name: 政策观察
+    assignee: Dave
+    weight: 0.80
+    style: 权威引用
+
+batch:
+  categories_per_week: 2
+  product_slot: false
+  product_category: null
+
+watermark:
+  default: 另一个示例公司平台
+  min_occurrences: 3
+  overrides: []
+
+quality:
+  min_chars: 1200
+  min_h2: 3
+  min_faq: 3
+  min_tables: 1
+  require_section_faq: false
+  timeliness_phrase: 数据截至
+  max_fix_rounds: 2
+
+citation_check:
+  engine: none
+  cookie_env: OTHER_COOKIE
+  timeout_seconds: 600
+  queries:
+    - {q: "另一个示例公司 市场动向", category: market-brief}
+
+workflow:
+  labels:
+    seo_monitor: other-seo-monitor
+    geo_check: other-geo-check
+    article_generate: other-article-generate
+    fqa_generate: other-fqa-generate
+    strategy_review: other-strategy-review
+
+people:
+  default_assignee: Carol
+  assignees: [Carol, Dave]
+
+thresholds:
+  sitemap_coverage_min: 0.80
+  lcp_max_seconds: 3.0
+  doubaobot_zero_streak_days: 5
+  static_pages_expected: 2
